@@ -17,11 +17,11 @@ block content
             .kakao-image
             .input
                 .email
-                    input(placeholder="카카오 계정(이메일)")
+                    input(placeholder="카카오 계정(이메일)")#inputId
                     i.fas.fa-sort-down
                 .password
-                    input(placeholder="비밀번호")
-            a.login(href="/users/kakaofriend", title="login") 로그인
+                    input(placeholder="비밀번호")#inputPassword
+            .login#loginText 로그인
             .check-login
                 .check
                     i.fas.fa-check
@@ -30,3 +30,5 @@ block content
             .text 모바일에서 카카오계정을 확인할 수 있습니다.
             .text.underbar 카카오계정안내
             .find-password 비밀번호를 잊어버리셨나요?
+
+    script(src="/javascripts/kakao-login.js")
