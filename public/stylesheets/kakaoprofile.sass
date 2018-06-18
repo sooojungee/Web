@@ -1,0 +1,150 @@
+@import kakaoglobal
+
+i:hover
+  cursor: pointer
+
+.profile
+  position: relative
+  width: 100%
+  height: 100%
+  .background
+    position: absolute
+    width: 100%
+    height: 100%
+    .image
+      width: 100%
+      height: 480px
+      background-image: url('https://cdn.shopify.com/s/files/1/1011/6998/products/TP_2000_B54-600x364_1024x1024.jpg?v=1463565019')
+      background-size: contain
+      position: relative
+      .i-items
+        width: 100%
+        height: 25px
+        position: absolute
+        padding: 0 7px
+        margin: 7px 0
+        bottom: 0
+        display: flex
+        i
+          color: white
+          width: 25px
+          height: 25px
+          margin: 0 5px
+          @include text-center(23px)
+          font-size: 18px
+          border: 1px solid white
+          border-radius: 50%
+          &:hover
+            cursor: pointer
+            background: #ccc
+            color: white
+        .money
+          padding: 0 0 0 1px
+    .empty-space
+      width: 100%
+      height: calc(100% - 480px)
+      background: white
+  .items
+    position: absolute
+    width: 100%
+    height: 100%
+    .top
+      width: 100%
+      height: 60px
+      display: flex
+      .close
+        width: 60px
+        height: 30px
+        margin: 15px 5px
+        i
+          width: 40px
+          height: 20px
+          color: white
+          font-size: 18px
+          @include text-center(20px)
+
+
+      .images-background
+        width: 32px
+        height: 34px
+        margin: 15px
+        background: white
+        border: 1px solid #999
+        box-shadow: 2px 0px 1px white
+        .images
+          width: 26px
+          height: 26px
+          background-image: url('https://i.ytimg.com/vi/nZnFi23PCXA/maxresdefault.jpg')
+          background-size: contain
+          margin: 2px
+    .empty-space
+      width: 100%
+      height: calc(100% - 360px)
+
+    .profile-session
+      width: 140px
+      height: 170px
+      margin: 0 auto
+      .image
+        width: 90px
+        height: 90px
+        border: 0px solid
+        border-radius: 50%
+        margin: 20px 25px 10px 25px
+        background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxODA2MDRfMjY0%2FMDAxNTI4MDczNzIyMTA3.ELTDw68Qpw3Fx8u9IdtgLjO0_eoZbsoEeJ3QiLjvnA4g.VtS5yDJiRMyLmUv8FnntoiH1G5qu870OtTtr4_HOOkAg.PNG%2FIsOgyeFxyEwc05cdAMW6AKGTwexQ.jpg&type=b400')
+        background-size: cover
+      .name-tag
+        width: 80px
+        margin: 0 auto
+        height: 20px
+        display: flex
+        .name
+          width: 60px
+          height: 20px
+          font-size: 15px
+          @include text-center(20px)
+        i
+          width: 20px
+          height: 20px
+          color: #ccc
+          font-size: 12px
+          @include text-center(20px)
+      .phone
+        width: 85px
+        height: 20px
+        margin: 15px auto
+        border: 0.5px solid #eee
+        color: #ccc
+        font-size: 11px
+        @include text-center(20px)
+        &:hover
+          cursor: pointer
+          background: rgba(0,0,0, 0.1)
+          color: white
+    .other-session
+      width: 100%
+      height: 110px
+      display: flex
+      color: black
+      .icons
+        width: 70px
+        height: 90px
+        margin: 10px
+        i
+          width: 48px
+          height: 48px
+          margin: 10px 11px
+          border: 0px solid
+          border-radius: 50%
+          background: #eee
+          font-size: 18px
+          color: rgb(84, 75, 75)
+          @include text-center(48px)
+        .text
+          width: 100%
+          height: 20px
+          font-size: 11px
+          @include text-center(20px)
+        &:hover
+          color: black
+

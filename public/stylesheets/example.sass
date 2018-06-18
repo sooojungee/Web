@@ -1,0 +1,251 @@
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  padding: 0
+  minx-width: 960px
+
+@mixin backgroundImage($url)
+  background: url($url) no-repeat
+  background-size: contain
+
+@mixin text-center($height)
+  line-height: $height
+  text-align: center
+
+
+.flex
+  flex: 1
+
+.content
+  width: 960px
+  height: 100%
+  margin: 0 auto
+
+
+
+.header
+  width: 100%
+  height: 280px
+  position: fixed
+  background: white
+  box-shadow: 0px 2px 2px #ccc
+  z-index: 1
+  .header-main
+    width: 100%
+    height: 40px
+    border-bottom: 1px solid #cccccc
+    .content
+      display: flex
+      .main
+        width: 200px
+        display: flex
+        &:hover
+          cursor: pointer
+          opacity: 0.6
+
+        i.fab.fa-instagram
+          position: relative
+          width: 30px
+          height: 40px
+          font-size: 25px
+          line-height: 40px
+
+        .border-right
+          width: 10px
+          height: 100%
+          font-size: 20px
+          @include text-center(40px)
+          color: #ccc
+        .instagram
+          width: 120px
+          height: 32px
+          margin: 4px
+          @include backgroundImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpekdVQiwy_jPy6yuZDvt1myUlrV8qt8rMuvp0xqicPQH3_LHT')
+      .search
+        width: 400px
+        .search-bar
+          width: 350px
+          height: 25px
+          margin: 8px
+          display: flex
+          position: relative
+          i.fa.fa-search
+            position: absolute
+            width: 25px
+            height: 25px
+            font-size: 18px
+            @include text-center(25px)
+            margin: 0 10px
+            color: #cccccc
+          input
+            width: 400px
+            height: 25px
+            font-size: 12px
+            line-height: 25px
+            color: #cccccc
+            padding: 0 50px
+            border: 1px solid #cccccc
+            border-radius: 5px
+
+      .icons
+        width: 120px
+        .icon
+          width: 40px
+          height: 40px
+          font-size: 18px
+          color: #333333
+          @include text-center(40px)
+          &:hover
+            cursor: pointer
+            font-weight: bold
+
+
+  .header-content
+    width: 100%
+    height: 200px
+    .content
+      display: flex
+      .photo
+        width: 200px
+        height: 100%
+        .photo-self
+          width: 120px
+          height: 120px
+          border: 0px solid
+          border-radius: 50%
+          margin: 40px
+          @include backgroundImage('https://scontent-icn1-1.cdninstagram.com/vp/a651436ee057e61953870a7ecad87fd9/5BB84685/t51.2885-19/s320x320/32621581_106360013581941_6008430067649085440_n.jpg')
+      .content-session
+        width: 600px
+        height: 160px
+        margin: 30px 0 10px 0
+        .name-tag
+          width: auto
+          height: 30px
+          display: flex
+          .name
+            width: 85px
+            height: 100%
+            font-size: 20px
+            line-height: 30px
+            font-weight: 600
+          i
+            width: 30px
+            height: 100%
+            font-size: 15px
+            line-height: 30px
+          .follow
+            width: 60px
+            height: 26px
+            margin: 2px
+            font-size: 13px
+            border: 1.5px solid #00B7FF
+            @include text-center(26px)
+            border-radius: 5px
+            color: #00B7FF
+            &:hover
+              cursor: pointer
+              background: #00B7FF
+              color: white
+        .introduce-session
+          width: 500px
+          height: 60px
+          .self-introduce
+            margin: 10px 0
+            height: 40px
+            font-size: 15px
+            color: #ccc
+        .number
+          width: 100%
+          height: 55px
+          display: flex
+          .num-session
+            margin: 0 20px 0 0
+            width: 90px
+            height: 70px
+            &:hover
+              cursor: pointer
+              .title
+                text-decoration: underline
+            .count
+              width: 100%
+              height: 30px
+              font-size: 28px
+              font-weight: 600
+            .title
+              width: 100%
+              height: 10px
+              font-size: 15px
+
+
+
+
+  .header-icons
+    width: 100%
+    height: 40px
+    border-top: 1px solid #ccc
+    .content
+      display: flex
+      .empty
+        width: 180px
+        height: 100%
+      .icon
+        width: 20px
+        height: 20px
+        font-size: 18px
+        margin: 10px 25px
+        color: #555555
+        &:hover
+          cursor: pointer
+          color: #00B7FF
+
+
+.empty
+  width: 100%
+  height: 280px
+
+.view
+  width: 100%
+  height: calc(100% - 280px)
+  background: rgb(222, 222, 222)
+  overflow: scroll
+  .card-view
+    width: 990px
+    height: 100%
+    margin: 0 auto
+    .card
+      display: inline-block
+      width: 330px
+      height: 330px
+      padding: 15px
+      @include backgroundImage('https://scontent-icn1-1.cdninstagram.com/vp/f3322f6fbb61984f306a4b7688efbec6/5BA59A95/t51.2885-15/e35/27581481_329147314255290_5394871990592995328_n.jpg')
+      background-clip: content-box
+      &:hover
+        cursor: pointer
+        opacity: 0.8
+
+
+
+
+//
+//.wrap
+//  width: 100%
+//  height: 2000px
+//  background: #f00
+//  .header
+//    width: 100%
+//    height: 300px
+//
+//    position: fixed
+//    background: #0a2f5b
+//  .content
+//    width: 100%
+//    height: 1000px
+//    background: #0f0
+//    .content-box
+//      display: inline-block
+//      width: 600px
+//      height: 600px
+//      background: #ccc

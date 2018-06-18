@@ -1,0 +1,68 @@
+html
+    head
+        title= title
+        link(rel="stylesheet", href="/stylesheets/example.css")
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin="anonymous")
+    body
+        .header
+            .header-main
+                .content
+                    .main
+                        i.fab.fa-instagram
+                        .border-right |
+                        .instagram
+                    .flex
+                    .search
+                        .search-bar
+                            i.fa.fa-search
+                            input(placeholder="Search")
+                    .flex
+                    .icons
+                        i.far.fa-compass.icon
+                        i.far.fa-heart.icon
+                        i.far.fa-user.icon
+            .header-content
+                .content
+                    .photo
+                        .photo-self
+                    .content-session
+                        .name-tag
+                            .name bumkeyk
+                            i.fas.fa-check-circle
+                            .follow follow
+                        .introduce-session
+                            .self-introduce SHINEE KEY luv little freaks
+                        .number
+                            .num-session
+                                .count 2,160
+                                .title posts
+                            .num-session
+                                .count 5.5m
+                                .title followers
+                            .num-session
+                                .count 14
+                                .title following
+            .header-icons
+                .content
+                    .empty
+                    i.fas.fa-th.icon
+                    i.fas.fa-bars.icon
+                    i.fas.fa-map-marker-alt.icon
+                    i.fas.fa-tags.icon
+
+        .empty
+        .view
+            .card-view
+                .card-session
+                    -for(var i = 0; i < 12; i++){
+                        .card
+                    -}
+
+
+
+
+        //
+        //.wrap
+        //    .header
+        //    .content
+        //        .content-box

@@ -1,0 +1,157 @@
+@import 'kakaoglobal'
+
+$main-text-color: rgb(140, 124, 126)
+
+@mixin text-color
+  color: $main-text-color
+  opacity: 0.8
+
+.main-content
+  width: 100%
+  height: 100%
+  background: #fae132
+
+
+
+.header
+  width: 100%
+  height: 40px
+  display: flex
+  i
+    opacity: 0.8
+    color: #888
+    font-size: 15px
+    width: 20px
+    height: 20px
+    line-height: 2px
+    margin: 10px 5px
+    @include text-center(20px)
+  i.fas.fa-window-minimize
+    font-size: 13px
+  i.fas.fa-times
+    font-size: 18px
+  .bar
+    width: 2px
+    height: 12px
+    margin: 14px 10px
+    line-height: 20px
+    background: #999
+
+.contents
+  .kakao-image
+    width: 150px
+    height: 150px
+    margin: 40px auto
+    background: url('https://lh5.ggpht.com/yVfPv-yLjIuBjpKj41NLkLXmuVv8XzH0m2hf-_sz9lQDv9WB9SX0McB8Jn4bQe4w5Q')
+    background-clip: padding-box
+    background-size: cover
+  .input
+    width: 100%
+    height: 90px
+    //border: 1px solid gray
+    //border-radius: 1px
+    .email
+      width: 100%
+      height: 45px
+      display: flex
+      position: relative
+    .password
+      input
+        -webkit-text-security: disc
+    input
+      width: 100%
+      height: 45px
+      font-size: 14px
+      line-height: 45px
+      padding: 0 10px
+
+    i
+      width: 20px
+      height: 40px
+      line-height: 40px
+      position: absolute
+      right: 0
+  .login
+    width: 100%
+    height: 45px
+    margin: 10px 0
+    border: 0px solid
+    border-radius: 2px
+    background: $kakao-brown
+    display: block
+    font-size: 16px
+    @include text-center(45px)
+    color: white
+    text-decoration: none
+    &:hover
+      cursor: pointer
+      opacity: 0.95
+
+
+  .check-login
+    width: 100%
+    height: 20px
+    margin: 5px 0
+    display: flex
+    .check
+      width: 17px
+      height: 17px
+      background: white
+      border: 1px solid #999
+      border-radius: 1px
+      i
+        opacity: 0
+        width: 16px
+        height: 16px
+        font-size: 12px
+        @include text-center(14px)
+      &:hover
+        i
+          cursor: pointer
+          opacity: 1
+    .keep-login
+      display: inline-block
+      height: 20px
+      font-size: 15px
+      @include text-color
+      margin: 0 10px
+  .bar
+    width: 100%
+    height: 1px
+    background: #999
+    opacity: 0.3
+    margin: 30px 0
+
+  .text
+    width: 100%
+    height: 20px
+    font-size: 14px
+    line-height: 20px
+    @include text-color
+  .underbar
+    color: $kakao-brown
+    text-decoration: underline
+    font-weight: 600
+    &:hover
+      cursor: pointer
+
+  .find-password
+    width: 200px
+    height: 30px
+    margin: 60px auto
+    @include text-color
+    border: 1px solid $main-text-color
+    font-size: 14px
+    @include text-center(30px)
+    &:hover
+      opacity: 1
+      cursor: pointer
+      font-weight: 400
+      color: #eee
+      background: $kakao-brown
+
+
+
+
+
+

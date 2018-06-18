@@ -1,0 +1,121 @@
+html
+    head
+        link(rel="stylesheet", href="/stylesheets/test0608.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin="anonymous")
+
+
+    body
+        .menu-field
+            .menu-sub
+                i.fab.fa-gitlab
+                .text Firebase
+
+            .menu-sub
+                i.fas.fa-home
+                .overview Project Overview
+                .bar |
+                i.fas.fa-cog
+            .scroll-content
+                .menu-content
+                    .title DEVELOP
+                    -for(var i = 0 ; i < 4 ; i ++){
+                    .content
+                        i.fas.fa-expand
+                        .sub 안녕하세요
+                    -}
+                    .bar
+                    .title STABILITY
+                    -for(var i = 0 ; i < 4 ; i ++){
+                    .content
+                        i.fas.fa-user-tie
+                        .sub 반갑습니당
+                    -}
+                    .bar
+                    .title ANALYTICS
+                    -for(var i = 0 ; i < 4 ; i ++){
+                    .content
+                        i.fab.fa-reddit-square
+                        .sub 수고하세영
+                    -}
+            .menu-sub
+            .menu-sub
+        .empty-field
+        .main-field
+            .main-notice
+                .notice handycode-app
+                i.fas.fa-caret-down
+                .flex
+                .text 문서로 이동
+                i.fas.fa-bell
+                i.far.fa-user-circle
+            .main-header
+                .header 개요
+                .flex
+                i.fas.fa-question-circle
+            .main-sub
+                .flex-content
+                .content
+                    .message
+                        i.fas.fa-envelope
+                        .text 새로운 Firebase 기능, 연구, 이벤트에 관한 이메일 업데이트를 수신합니다.
+                        .join 신청
+                .flex-content
+                    i.material-icons close
+            .main-content-1
+                .content
+                    .title
+                        .message-content 프로젝트 앱 1개
+                        .flex
+                        .add-content 다른 앱 추가
+                    .content-box
+                        .box-title
+                            i.fab.fa-android
+                            .title-content
+                                .title-1 Handy Code
+                                .title-2 com.samsung.android.codemaker
+                        .box-content
+                            .content-sub.border-right
+                                .box
+                                    .text 일일 활성 사용자 수
+                                    .number
+                                        .count 31
+                                        .percentage.minus -26.2%
+                                    i.far.fa-chart-bar
+                                .box
+                                    .text 월간 활성 사용자 수
+                                    .number
+                                        .count 622
+                                        .percentage.plus +0.5%
+                                    i.far.fa-chart-bar
+
+                            .content-sub
+                                .box
+                                    .text 비정상 종료가 발생하지 않은 사용자
+                                    .number
+                                        .count 85%
+                                        .percentage
+                                    i.fas.fa-chart-line
+                                .box
+                                    .text 비정상 종료
+                                    .number
+                                        .count 176
+                                        .percentage
+                                    i.fas.fa-chart-line
+            .main-content-2
+                .content.big
+                    .card-title Firebase 탐색
+                    .card
+                        .card-photo
+                        .card-title Analytics
+                        .card-content 자세한 분석을 확인하여 사용자가 앱에 참여하는 방식을 추정하고 분석할 수 있습니다.
+                    .card
+                        .card-photo
+                        .card-title Authentication
+                        .card-content 서버측 코드 없이 다양한 제공업체의 사용자를 인증하고 관리할 수 있습니다.
+                    .card
+                        .card-photo
+                        .card-title Database
+                        .card-content 연결된 모든 클라이언트에서 실시간으로 데이터를 저장하고 동기화 할 수 있습니다.
+
+

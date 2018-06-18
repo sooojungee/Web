@@ -1,0 +1,390 @@
+@import "global"
+
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  padding: 0
+  display: flex
+
+.content
+  width: 940px
+  height: 100%
+  margin: auto
+
+.flex
+  flex: 1
+
+.big
+  width: 900px
+  @include middle-view
+    width: 700px
+  @include small-view
+    width: 400px
+
+.menu-field
+  overflow: hidden
+  white-space: nowrap
+  width: 50px
+  height: 100%
+  background: rgb(38, 47, 61)
+  transition: width 0.3s
+  .menu-sub
+    width: 220px
+    height: 50px
+    display: flex
+    i.fab
+      width: 30px
+      height: 30px
+      font-size: 30px
+      margin: 10px
+      color: orange
+      line-height: 30px
+    .text
+      margin: 10px
+      height: 30px
+      line-height: 30px
+      font-size: 20px
+      color: white
+    i.fas.fa-home
+      height: 30px
+      width: 30px
+      margin: 10px
+      font-size: 18px
+      color: #55c3f5
+      @include text-center(30px)
+    .overview
+      color: #55c3f5
+      font-size: 14px
+      width: 105px
+      height: 30px
+      margin: 10px
+      line-height: 30px
+    .bar
+      width: 5px
+      height: 30px
+      margin: 10px 5px
+      line-height: 30px
+      font-size: 20px
+      color: #cccccc
+    i.fas.fa-cog
+      width: 20px
+      margin: 10px 5px
+      height: 30px
+      line-height: 30px
+      color: white
+  .scroll-content
+    width: 100%
+    height: calc(100% - 200px)
+    overflow-x: hidden
+    overflow-y: hidden
+    scrollbar-base-color: #1b9de2
+    &::-webkit-scrollbar
+      width: 8px
+    &::-webkit-scrollbar-track
+      background: #555
+      border-radius: 10px
+    &::-webkit-scrollbar-thumb
+      background: #8b9bb1
+      border: 1.5px solid #555
+      border-radius: 10px
+    .menu-content
+      width: 220px
+      height: 600px
+      background: rgb(25, 34, 42)
+      .bar
+        width: 100%
+        height: 1px
+        background: #ccc
+      .title
+        height: 40px
+        width: 100%
+        color: white
+        font-size: 16px
+        line-height: 40px
+        margin: 0 60px
+      .content
+        width: 100%
+        height: 40px
+        display: flex
+        color: white
+        i
+          width: 30px
+          height: 20px
+          margin: 10px
+          font-size: 15px
+          line-height: 20px
+          text-align: center
+        .sub
+          width: 100px
+          height: 20px
+          margin: 10px
+          font-size: 14px
+          line-height: 20px
+    &:hover
+      overflow-y: scroll
+
+  .menu-sub
+    width: 220px
+    height: 50px
+    border-top: 0.5px solid gray
+    border-bottom: 0.5px solid gray
+
+  &:hover
+    cursor: pointer
+    width: 220px
+
+.main-field
+  flex: 1
+  height: 100%
+  overflow-y: scroll
+  overflow-x: hidden
+  .main-notice
+    width: 100%
+    height: 50px
+    background: rgb(27, 157, 226)
+    display: flex
+    color: white
+    font-weight: 200
+    .notice
+      display: inline-block
+      font-size: 8px
+      height: 12px
+      margin: 19px 0px 19px 20px
+
+    i.fas.fa-caret-down
+      width: 6px
+      font-size: 12px
+      height: 12px
+      margin: 19px 0
+
+    .text
+      width: 60px
+      height: 50px
+      font-size: 13px
+      line-height: 50px
+    i.fas.fa-bell
+      width: 50px
+      height: 100%
+      @include text-center(50px)
+    i.far.fa-user-circle
+      width: 40px
+      height: 50px
+      font-size: 25px
+      line-height: 50px
+
+  .main-header
+    width: 100%
+    height: 50px
+    background: rgb(27, 157, 226)
+    display: flex
+    .header
+      width: 100px
+      height: 50px
+      line-height: 50px
+      color: white
+      font-size: 18px
+      font-weight: 300
+      margin: 0 20px
+    i
+      width: 25px
+      height: 30px
+      margin: 10px
+      line-height: 30px
+      font-size: 20px
+      color: white
+
+  .main-sub
+    width: 100%
+    height: 40px
+    background: rgb(250, 250, 250)
+    display: flex
+    .flex-content
+      width: 30px
+      height: 40px
+      i
+        width: 25px
+        height: 40px
+        line-height: 40px
+        font-size: 20px
+        color: #555
+
+    .content
+      .message
+        width: 600px
+        height: 40px
+        line-height: 40px
+        margin: auto
+        display: flex
+        i
+          width: 30px
+          height: 40px
+          line-height: 40px
+          font-size: 20px
+          color: #1b9de2
+        .text
+          width: 480px
+          height: 40px
+          font-size: 14px
+          color: #666
+          font-weight: 600
+          text-align: center
+        .join
+          width: 90px
+          height: 40px
+          line-height: 40px
+          color: #1b9de2
+          font-size: 14px
+          font-weight: 600
+
+  .main-content-1
+    width: 100%
+    height: 340px
+    background: rgb(239, 241, 240)
+    .content
+      .title
+        width: 100%
+        height: 40px
+        display: flex
+        .message-content
+          width: 100px
+          height: 40px
+          font-size: 15px
+          line-height: 40px
+          margin: 0 10px
+          color: #5c5c5c
+        .add-content
+          display: inline-block
+          height: 40px
+          line-height: 40px
+          font-size: 15px
+          font-weight: 600
+          color: #00B7FF
+          margin: 0 10px
+      .content-box
+        width: 100%
+        height: 280px
+        margin: 10px 0
+        border: 1px solid #ccc
+        background: white
+        border-radius: 10px
+        box-shadow: 0px 2px 2px #ccc
+        .box-title
+          width: 100%
+          height: 60px
+          border-bottom: 1px solid #ccc
+          display: flex
+          i
+            width: 40px
+            height: 40px
+            margin: 10px
+            border: 1px solid #cccccc
+            border-radius: 50%
+            font-size: 30px
+            color: #55c3f5
+            @include text-center(40px)
+          .title-content
+            width: 210px
+            height: 60px
+            .title-1
+              width: 100px
+              height: 25px
+              margin: 2.5px
+              font-size: 18px
+              line-height: 25px
+              font-weight: 600
+              color: black
+            .title-2
+              width: 200px
+              height: 25px
+              margin: 2.5px
+              font-size: 14px
+              line-height: 25px
+              color: #ccc
+        .box-content
+          width: 100%
+          height: 220px
+          display: flex
+          .content-sub
+            flex: 1
+            height: 100%
+            display: flex
+            .box
+              width: 190px
+              height: 140px
+              margin: 20px
+              .text
+                width: 190px
+                height: 20px
+                font-size: 13px
+                color: #555
+                line-height: 20px
+
+              .number
+                width: 180px
+                height: 40px
+                margin: 10px
+                display: flex
+                .count
+                  width: 60px
+                  height: 40px
+                  font-size: 30px
+                  font-weight: 600
+                .percentage
+                  width: 40px
+                  height: 20px
+                  font-size: 12px
+                  margin: 14px 0 0 0
+                .minus
+                  color: red
+                .plus
+                  color: blue
+              i
+                width: 100px
+                margin: 0 20px
+                height: 50px
+                font-size: 50px
+                color: #1b9de2
+
+          .border-right
+            border-right: 1px solid #ccc
+  .main-content-2
+    width: 100%
+    height: 500px
+    background: rgb(208, 216, 220)
+    .big
+      .card-title
+        width: 100%
+        height: 80px
+        color: #444
+        line-height: 80px
+        font-size: 20px
+        margin: 0px 10px
+      .card
+        display: inline-block
+        width: 280px
+        height: 280px
+        margin: 10px
+        background: white
+        background-clip: content-box
+        box-shadow: 0px 2px 2px #ccc
+        .card-photo
+          width: 100%
+          height: 120px
+          background: pink
+        .card-title
+          width: 200px
+          height: 30px
+          line-height: 30px
+          font-size: 20px
+          margin: 10px
+          font-weight: 600
+          color: #777
+
+        .card-content
+          width: 100%
+          height: 50px
+          padding: 10px
+          color: #888
+          font-size: 13px

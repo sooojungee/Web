@@ -1,0 +1,156 @@
+.emoticon {
+  width: 120px;
+  height: 120px;
+  background: url("http://upload2.inven.co.kr/upload/2017/07/18/bbs/i14363715151.gif");
+  background-size: contain; }
+
+.chat-other {
+  padding: 0 43px 0 0; }
+  .chat-other .date {
+    right: 0;
+    bottom: 0; }
+
+.chat-me {
+  padding: 0 0 0 45px; }
+  .chat-me .date {
+    left: 0;
+    bottom: 0; }
+
+.chat-last {
+  display: flex;
+  position: relative; }
+  .chat-last .other {
+    display: inline-block;
+    padding: 0 10px;
+    background: #ddd;
+    border: 0px solid;
+    border-radius: 10px;
+    line-height: 30px;
+    max-width: 200px; }
+  .chat-last .me {
+    max-width: 200px;
+    display: inline-block;
+    background: #333333;
+    border: 0px solid;
+    border-radius: 10px;
+    line-height: 30px;
+    font-weight: 300;
+    color: #fafafa;
+    margin: 0 30px 0 50px; }
+  .chat-last .date {
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    color: #888;
+    font-size: 10px;
+    font-weight: 300;
+    transform: scale(0.9); }
+
+.ui-bar {
+  width: 100%;
+  height: 50px;
+  background: #f8f8f8;
+  display: flex;
+  border-bottom: 1px solid #ddd; }
+  .ui-bar i {
+    width: 30px;
+    height: 30px;
+    margin: 12px;
+    color: black; }
+    .ui-bar i:hover {
+      cursor: pointer; }
+  .ui-bar .text {
+    width: 40px;
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 30px; }
+
+.chatting {
+  overflow-y: auto;
+  height: calc(100% - 90px);
+  background: #f8f8f8; }
+  .chatting .chat {
+    margin: 5px 0;
+    display: flex;
+    border: 0px solid;
+    border-radius: 10px;
+    font-size: 11px; }
+    .chatting .chat .other {
+      display: inline-block;
+      padding: 0 10px;
+      background: #ddd;
+      border: 0px solid;
+      border-radius: 10px;
+      line-height: 30px;
+      max-width: 200px;
+      margin: 0 10px 0 47px; }
+    .chatting .chat .me {
+      max-width: 200px;
+      display: inline-block;
+      background: #333333;
+      border: 0px solid;
+      border-radius: 10px;
+      line-height: 30px;
+      font-weight: 300;
+      color: #fafafa;
+      margin: 0 10px 0 0;
+      padding: 0 10px; }
+  .chatting .chat-first {
+    margin: 5px 0;
+    display: flex;
+    position: relative; }
+    .chatting .chat-first .photo {
+      width: 38px;
+      height: 38px;
+      margin: 5px;
+      border: 0px solid;
+      border-radius: 50%;
+      background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxODA2MDRfMjY0%2FMDAxNTI4MDczNzIyMTA3.ELTDw68Qpw3Fx8u9IdtgLjO0_eoZbsoEeJ3QiLjvnA4g.VtS5yDJiRMyLmUv8FnntoiH1G5qu870OtTtr4_HOOkAg.PNG%2FIsOgyeFxyEwc05cdAMW6AKGTwexQ.jpg&type=b400");
+      background-size: cover; }
+    .chatting .chat-first .profile .name {
+      font-size: 11.5px;
+      line-height: 16px;
+      margin: 2px 0; }
+    .chatting .chat-first .profile .other {
+      display: inline-block;
+      padding: 0 10px;
+      background: #ddd;
+      border: 0px solid;
+      border-radius: 10px;
+      line-height: 30px;
+      max-width: 200px;
+      font-size: 11px;
+      margin: 0 10px 0 0; }
+    .chatting .chat-first .date {
+      right: 0;
+      bottom: 0; }
+  .chatting::-webkit-scrollbar {
+    width: 6px; }
+  .chatting::-webkit-scrollbar-thumb {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px; }
+
+.input-bar {
+  width: 100%;
+  height: 40px;
+  background: white;
+  display: flex; }
+  .input-bar i {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    color: #c8c8c8;
+    text-align: center;
+    line-height: 30px; }
+    .input-bar i:hover {
+      cursor: pointer;
+      color: #666; }
+  .input-bar input {
+    flex: 1;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border: none; }
+
+/*# sourceMappingURL=kakaouserchat.css.map */

@@ -1,0 +1,15 @@
+
+@mixin text-center($height)
+  text-align: center
+  line-height: $height
+
+@mixin small-view
+  @media screen and (max-width: 600px)
+    @content
+
+@mixin middle-view
+  @media screen and (max-width: 900px)
+    @content
+@mixin menu-view
+  @media screen and (min-width: 700px)
+    @content

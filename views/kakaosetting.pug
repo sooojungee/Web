@@ -1,0 +1,66 @@
+extends kakaolayout
+
+block link
+    link(rel="stylesheet", href="/stylesheets/kakaosetting.css")
+
+block content
+    .ui-bar
+        a(href="/users/kakaochat", title="chat")
+            i.material-icons arrow_back
+        .text 설정
+        .flex
+        i.material-icons search
+    .setting
+        .session
+            i.fas.fa-bullhorn
+            .text 공지사항
+        .mini-bar
+        .session
+            i.fas.fa-flask
+            .text 실험실
+        .mini-bar
+        .session
+            i.material-icons info
+            .text
+                .text-1 버전정보
+                .text-2 7.2.2
+        .bar
+        .session
+            i.fas.fa-lock
+            .text 개인/보안
+        .mini-bar
+        .session
+            i.material-icons notifications
+            .text 알림
+        .mini-bar
+        .session
+            i.material-icons person
+            .text 친구
+        .mini-bar
+        .session
+            i.fas.fa-comment
+            .text 채팅
+        .mini-bar
+        .session
+            i.material-icons brightness_medium
+            .text 화면
+        .mini-bar
+        .session
+            i.fas.fa-paint-brush
+            .text 테마
+        .mini-bar
+        .session
+            i.material-icons star_half
+            .text 게임별
+        .mini-bar
+        .session
+            i.material-icons more_horiz
+
+            .text 기타
+        .bar
+        .session
+            i.fas.fa-question-circle
+
+            .text 고객센터
+
+

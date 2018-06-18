@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.content {
+  width: 100vw;
+  height: 100vh; }
+  .content .modal-table {
+    width: 100%;
+    height: 100%;
+    display: table;
+    margin: 0 auto; }
+    .content .modal-table .modal-cell {
+      display: table-cell;
+      vertical-align: middle;
+      width: 100%;
+      height: 100%; }
+      .content .modal-table .modal-cell .box {
+        width: 200px;
+        height: 200px;
+        background: gold;
+        margin: 0 auto; }
+
+/*# sourceMappingURL=modal.css.map */

@@ -1,0 +1,32 @@
+extends kakaolayout
+
+block link
+    link(rel="stylesheet", href="/stylesheets/kakaomain.css")
+
+
+block content
+
+    .main-content
+        .header
+            .flex
+            i.fas.fa-align-left
+            .bar
+            i.fas.fa-window-minimize
+            i.fas.fa-times
+        .contents
+            .kakao-image
+            .input
+                .email
+                    input(placeholder="카카오 계정(이메일)")
+                    i.fas.fa-sort-down
+                .password
+                    input(placeholder="비밀번호")
+            a.login(href="/users/kakaofriend", title="login") 로그인
+            .check-login
+                .check
+                    i.fas.fa-check
+                .keep-login 잠금모드로 자동로그인
+            .bar
+            .text 모바일에서 카카오계정을 확인할 수 있습니다.
+            .text.underbar 카카오계정안내
+            .find-password 비밀번호를 잊어버리셨나요?

@@ -1,0 +1,46 @@
+extends kakaolayout
+
+block link
+    link(rel="stylesheet", href="/stylesheets/kakaoprofile.css")
+
+
+
+block content
+    .profile
+        .background
+            .image
+                .i-items
+                    i.material-icons card_giftcard
+                    i.material-icons.money attach_money
+                    .flex
+                    i.material-icons star
+            .empty-space
+        .items
+            .top
+                a.close(href="/users/kakaofriend", title="friend")
+                    i.material-icons close
+                .flex
+                .images-background
+                    .images
+            .empty-space
+            .profile-session
+                .image
+                .name-tag
+                    .flex
+                    .name ㄱ홍주원
+                    i.fas.fa-pencil-alt.flex
+                .phone 010-9739-9749
+            .other-session
+                .flex
+                a.icons(href="/users/kakaouserchat", title="userchat")
+
+                    i.fas.fa-comment
+                    .text 1:1채팅
+                .icons
+                    i.fas.fa-phone
+                    .text 무료통화
+                .icons
+                    i.fas.fa-quote-right
+                    .text 카카오스토리
+                .flex
+

@@ -1,0 +1,93 @@
+extends kakaolayout
+
+block link
+    link(rel="stylesheet", href="/stylesheets/kakaouserchat.css")
+
+block content
+    .ui-bar
+        a(href="/users/kakaochat", title="chat")
+            i.material-icons arrow_back
+        .text 홍주원
+        .flex
+        i.material-icons search
+        i.material-icons dehaze
+    .chatting
+        .chat-first
+            a.photo(href="/users/kakaoprofile", title="profile")
+            .profile
+                .name ㄱ홍주원
+                .other 속으론
+        .chat
+            .other 그렇게
+        .chat
+            .other 생각안하시는거
+        .chat
+            .other ^---^
+        .chat
+            .chat-last.chat-other
+                .other 다 알아요
+                .date 오후 12:28
+
+        .chat
+            .flex
+            .me ... 속의 생각을
+        .chat
+            .flex
+            .me 이제서야 말하건데
+        .chat
+            .flex
+            .chat-last.chat-me
+                .date 오후 12:28
+                .me 몰라주다니
+
+        .chat-first
+            a.photo(href="/users/kakaoprofile", title="profile")
+            .profile
+                .name ㄱ홍주원
+                .other 그렇게 말해두
+        .chat
+            .other 다
+        .chat
+            .other 알아요!!
+        .chat
+            .chat-last.chat-other
+                .other ^^
+                .date 오후 12:31
+        .chat
+            .flex
+            .chat-last.chat-me
+                .date 오후 12:32
+                .me 너도 눈찌를깡
+        .chat-first
+            a.photo(href="/users/kakaoprofile", title="profile")
+            .profile
+                .name ㄱ홍주원
+                .chat-last.chat-other
+                    .other ㅋㄷㅋㄷ
+                    .date 오후 12:33
+        .chat
+            .flex
+            .me ㅎㅎ
+        .chat
+            .flex
+            .chat-last.chat-me
+                .date 오후 12:44
+                .me 너도 눈찌를깡
+        .chat-first
+            a.photo(href="/users/kakaoprofile", title="profile")
+            .profile
+                .name ㄱ홍주원
+                .chat-last.chat-other
+                    .emoticon
+                    .date 오후 12: 55
+        .chat
+            .flex
+            .chat-last.chat-me
+                .date 오후 12: 57
+                .me ㅎㅎ
+
+    .input-bar
+        i.material-icons add_box
+        input
+        i.material-icons tag_faces
+        i.material-icons attach_file
