@@ -56,4 +56,8 @@ router.get('/kakaoprofile', function(req, res, next) {
     res.render('kakaoprofile', {title: '카카오톡2'});
 });
 
+router.get('/calculator', function(req, res, next) {
+    res.render('calculator', {title: '계산기'});
+});
+
 module.exports = router;

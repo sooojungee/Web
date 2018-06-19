@@ -1,0 +1,47 @@
+html
+    head
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin="anonymous")
+
+        link(rel="stylesheet", href="/stylesheets/calculator.css")
+
+        script(src="https://code.jquery.com/jquery-3.3.1.min.js",
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
+        crossorigin="anonymous")
+    body
+        .main
+            .content-table
+                .content-table-cell
+                    .calculator
+                        .header
+                            .header-button.red
+                            .header-button.yellow
+                            .header-button.green
+                        .answer 0
+                        .buttons
+                            .button.background#return AC
+                            .button.background#plusminus +/-
+                            .button.background#percentage %
+                            .button.sign.calc(command="/")
+                                i.fas.fa-divide
+                            .button.background.num 7
+                            .button.background.num 8
+                            .button.background.num 9
+                            .button.sign.calc(command="*")
+                                i.fas.fa-times
+                            .button.background.num 4
+                            .button.background.num 5
+                            .button.background.num 6
+                            .button.sign.calc(command="-")
+                                i.fas.fa-minus
+                            .button.background.num 1
+                            .button.background.num 2
+                            .button.background.num 3
+                            .button.sign.calc(command="+")
+                                i.fas.fa-plus
+                            .button.background.button-twice.num 0
+                            .button.background.dot .
+                            .button.sign.result
+                                i.fas.fa-equals
+
+
+        script(src="/javascripts/calculator.js")
