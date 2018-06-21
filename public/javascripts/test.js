@@ -111,3 +111,16 @@ $sender.on('click', function () {
 // $sender.on('click', sendMessage);
 // //sendMessage는 등록
 // //sendMessage() 는 선언!!
+
+
+$('.test1').on('click', function(){
+    // console.log($('.test2').text());
+    console.log($('.test1').not($('.test1 .test2')).text());
+    console.log($('.test1').not(this).text());
+    // console.log(($('.test1').content).text());
+    console.log($('.test1').children('.test2').text());
+    // console.log($('.test1').not($(this).children).text());
+});
+
+
+

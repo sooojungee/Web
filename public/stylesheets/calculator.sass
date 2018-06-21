@@ -9,12 +9,18 @@ body
 
 .red
   background: red
+  i
+    color: red
 
 .yellow
   background: yellow
+  i
+    color: yellow
 
 .green
   background: green
+  i
+    color: green
 
 .main
   width: 100vw
@@ -32,8 +38,8 @@ body
       .calculator
         width: 236px
         height: 325px
-        background: rgba(0, 0, 0, 0.5)
-
+        background: rgba(0, 0, 0, 0.4)
+        border-radius: 10px
         .header
           width: 100%
           height: 30px
@@ -43,15 +49,30 @@ body
             height: 12px
             border-radius: 50%
             margin: 5px
+            i
+              width: 12px
+              height: 12px
+              @include text-center(12px)
+              font-weight: 100
+              font-size: 11px
+
+          &:hover
+            cursor: default
+            .header-button
+              i
+                color: black
+
+            .mini
+              line-height: 7px
         .answer
           width: 100%
           height: 50px
-          padding-right: 5px
+          padding-right: 8px
           color: white
           font-size: 48px
           font-weight: 300
           text-align: right
-          overflow-x: auto
+          overflow: hidden
         .buttons
           width: 100%
           height: 245px
@@ -80,9 +101,15 @@ body
   border-right: 1px solid #999
   &:hover
     background: rgb(211, 127, 59)
-    //border: 2px solid #999
+//border: 2px solid #999
 
 .background:hover
   opacity: 0.8
   background: #ccc
   cursor: default
+
+.border-left-bottom
+  border-bottom-left-radius: 10px
+
+.border-right-bottom
+  border-bottom-right-radius: 10px

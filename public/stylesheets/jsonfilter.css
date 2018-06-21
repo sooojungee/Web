@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.main {
+  width: 600px;
+  height: 400px;
+  padding: 100px; }
+  .main .box {
+    display: flex;
+    width: 400px;
+    height: 100px; }
+    .main .box .box-select {
+      background: #f00;
+      width: 300px;
+      height: 100px; }
+    .main .box .button {
+      background: #0f0;
+      width: 100px;
+      height: 100px; }
+  .main .answer {
+    width: 400px;
+    height: 200px;
+    background: #ccc; }
+
+/*# sourceMappingURL=jsonfilter.css.map */

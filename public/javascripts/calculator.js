@@ -1,3 +1,5 @@
+(function() {
+
 var $num = $('.num');
 var $sign = $('.button.sign.calc');
 
@@ -19,16 +21,15 @@ function updateScreen() {
         $('.answer').css('font-size', 48);
 
     $('.answer').text(num);
-    console.log(typeof(num));
 }
 
 $num.on('click', function () {
 
     var number = $(this).text();
 
-    if (num === '0') {
+    if (num === '0' || num === 0) {
         console.log('s');
-        if(number !== 0)
+        if (number !== 0)
             num = number;
     }
     else {
@@ -42,11 +43,19 @@ $num.on('click', function () {
 
 var state = '';
 
+
 $sign.on('click', function () {
 
-    if (state !== num)
+    // if (state !== num)
+    //     num += $(this).attr('command');
+    // state = num;
+    var text = $('.answer').text();
+
+    if (!isNaN(text[text.length - 1])) {
+        console.log('skdufh' + text[text.length - 1]);
         num += $(this).attr('command');
-    state = num;
+
+    }
 
     updateScreen();
 });
@@ -58,7 +67,12 @@ $('.button.result').on('click', function () {
 });
 
 $('#percentage').on('click', function () {
-    num *= 0.01;
+    var text = $('.answer').text();
+
+    if (!isNaN(text[text.length - 1])) {
+        num *= 0.01;
+    }
+
     updateScreen();
 });
 
@@ -70,7 +84,12 @@ $('#return').on('click', function () {
 });
 
 $('#plusminus').on('click', function () {
-    num = -num;
+    var text = $('.answer').text();
+
+    if (!isNaN(text[text.length - 1])) {
+        num = -num;
+    }
+
     updateScreen();
 });
 
@@ -84,3 +103,5 @@ $('.button.dot').on('click', function () {
     updateScreen();
 
 });
+
+})();

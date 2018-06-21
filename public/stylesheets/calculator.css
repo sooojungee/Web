@@ -7,12 +7,18 @@ body {
 
 .red {
   background: red; }
+  .red i {
+    color: red; }
 
 .yellow {
   background: yellow; }
+  .yellow i {
+    color: yellow; }
 
 .green {
   background: green; }
+  .green i {
+    color: green; }
 
 .main {
   width: 100vw;
@@ -30,7 +36,8 @@ body {
       .main .content-table .content-table-cell .calculator {
         width: 236px;
         height: 325px;
-        background: rgba(0, 0, 0, 0.5); }
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 10px; }
         .main .content-table .content-table-cell .calculator .header {
           width: 100%;
           height: 30px;
@@ -40,15 +47,28 @@ body {
             height: 12px;
             border-radius: 50%;
             margin: 5px; }
+            .main .content-table .content-table-cell .calculator .header .header-button i {
+              width: 12px;
+              height: 12px;
+              text-align: center;
+              line-height: 12px;
+              font-weight: 100;
+              font-size: 11px; }
+          .main .content-table .content-table-cell .calculator .header:hover {
+            cursor: default; }
+            .main .content-table .content-table-cell .calculator .header:hover .header-button i {
+              color: black; }
+            .main .content-table .content-table-cell .calculator .header:hover .mini {
+              line-height: 7px; }
         .main .content-table .content-table-cell .calculator .answer {
           width: 100%;
           height: 50px;
-          padding-right: 5px;
+          padding-right: 8px;
           color: white;
           font-size: 48px;
           font-weight: 300;
           text-align: right;
-          overflow-x: auto; }
+          overflow: hidden; }
         .main .content-table .content-table-cell .calculator .buttons {
           width: 100%;
           height: 245px;
@@ -84,5 +104,11 @@ body {
   opacity: 0.8;
   background: #ccc;
   cursor: default; }
+
+.border-left-bottom {
+  border-bottom-left-radius: 10px; }
+
+.border-right-bottom {
+  border-bottom-right-radius: 10px; }
 
 /*# sourceMappingURL=calculator.css.map */

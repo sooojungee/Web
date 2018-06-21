@@ -1,0 +1,14 @@
+.test1 {
+  width: 200px;
+  height: 200px;
+  background: yellow; }
+  .test1 .test2 {
+    width: 100px;
+    height: 100px;
+    background: #55c3f5; }
+    .test1 .test2 .test3 {
+      width: 40px;
+      height: 40px;
+      background: #f00; }
+
+/*# sourceMappingURL=06test.css.map */

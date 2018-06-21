@@ -59,5 +59,11 @@ router.get('/kakaoprofile', function(req, res, next) {
 router.get('/calculator', function(req, res, next) {
     res.render('calculator', {title: '계산기'});
 });
+router.get('/06test', function(req, res, next) {
+    res.render('06test', {title: 'test'});
+});
 
+router.get('/jsonfilter', function(req, res, next) {
+    res.render('jsonfilter', {title: 'test'});
+});
 module.exports = router;

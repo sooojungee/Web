@@ -3,8 +3,9 @@ html
         link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin="anonymous")
 
         link(rel="stylesheet", href="/stylesheets/calculator.css")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 
-        script(src="https://code.jquery.com/jquery-3.3.1.min.js",
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js",
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
         crossorigin="anonymous")
     body
@@ -14,8 +15,11 @@ html
                     .calculator
                         .header
                             .header-button.red
+                                i.material-icons close
                             .header-button.yellow
+                                i.material-icons.mini minimize
                             .header-button.green
+                                i.material-icons add
                         .answer 0
                         .buttons
                             .button.background#return AC
@@ -38,9 +42,9 @@ html
                             .button.background.num 3
                             .button.sign.calc(command="+")
                                 i.fas.fa-plus
-                            .button.background.button-twice.num 0
+                            .button.background.button-twice.num.border-left-bottom 0
                             .button.background.dot .
-                            .button.sign.result
+                            .button.sign.result.border-right-bottom
                                 i.fas.fa-equals
 
 
