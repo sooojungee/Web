@@ -114,12 +114,20 @@ $sender.on('click', function () {
 
 
 $('.test1').on('click', function(){
-    // console.log($('.test2').text());
-    console.log($('.test1').not($('.test1 .test2')).text());
-    console.log($('.test1').not(this).text());
-    // console.log(($('.test1').content).text());
-    console.log($('.test1').children('.test2').text());
-    // console.log($('.test1').not($(this).children).text());
+    // // console.log($('.test2').text());
+    // console.log($('.test1').not($('.test1 .test2')).text());
+    // console.log($('.test1').not(this).text());
+    // // console.log(($('.test1').content).text());
+    // console.log($('.test1').children('.test2').text());
+    // // console.log($('.test1').not($(this).children).text());
+// <div class="test1">안녕
+//         <div class="text2">하세요
+//         <div class="box">반갑</div>
+//         <div class="box">습니다.</div>
+//         </div>
+//         </div>
+    var text1 = $(this).html().split('<');
+    console.log( text1.length);
 });
 
 
