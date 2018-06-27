@@ -64,6 +64,9 @@
       color: #fafafa;
       margin: 0 10px 0 0;
       padding: 0 10px; }
+    .chatting .chat i {
+      width: 20px;
+      font-size: 12px; }
   .chatting .chat-first {
     margin: 5px 0;
     display: flex; }
@@ -119,6 +122,7 @@
     width: 30px;
     height: 30px;
     margin: 5px;
-    border: none; }
+    border: none;
+    word-break: break-all; }
 
 /*# sourceMappingURL=kakaouserchat.css.map */
