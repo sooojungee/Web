@@ -43,7 +43,8 @@
     display: flex;
     border: 0px solid;
     border-radius: 10px;
-    font-size: 11px; }
+    font-size: 11px;
+    overflow-x: hidden; }
     .chatting .chat .other {
       display: inline-block;
       padding: 0 10px;
@@ -52,7 +53,8 @@
       border-radius: 10px;
       line-height: 30px;
       max-width: 200px;
-      margin: 0 10px 0 47px; }
+      margin: 0 10px 0 47px;
+      word-break: break-all; }
     .chatting .chat .me {
       max-width: 200px;
       display: inline-block;
@@ -63,7 +65,8 @@
       font-weight: 300;
       color: #fafafa;
       margin: 0 10px 0 0;
-      padding: 0 10px; }
+      padding: 0 10px;
+      word-break: break-all; }
     .chatting .chat i {
       width: 20px;
       font-size: 12px; }

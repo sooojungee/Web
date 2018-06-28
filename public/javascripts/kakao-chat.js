@@ -41,12 +41,11 @@ chatApi.on('child_added', function (d) {
       console.log(messageContent.message);
 
 
-
-        var id = Object.keys(arrId[arrId.length - 2])[0];
-        var content = arrId[arrId.length - 2][Object.keys(arrId[arrId.length - 2])[0]].message;
-        $("[index=" + id + "]").html('<div class="flex"></div>\n' + '<i class="material-icons" id="close">close</i>' +
-          '<div class="me"></div>');
-        $("[index=" + id + "]").find('.me').text(content);
+      var id = Object.keys(arrId[arrId.length - 2])[0];
+      var content = arrId[arrId.length - 2][Object.keys(arrId[arrId.length - 2])[0]].message;
+      $("[index=" + id + "]").html('<div class="flex"></div>\n' + '<i class="material-icons" id="close">close</i>' +
+        '<div class="me"></div>');
+      $("[index=" + id + "]").find('.me').text(content);
 
     }
 
@@ -84,6 +83,9 @@ chatApi.on('child_added', function (d) {
 </div>`
     }
 
+    // console.log('oml' + arrId[arrId.length - 1][Object.keys(arrId[arrId.length - 1])[0]].message);
+    // console.log('omf' + arrId[arrId.length - 2][Object.keys(arrId[arrId.length - 2])[0]].message);
+
   }
 
   $('.chatting').append(template);
@@ -99,17 +101,17 @@ chatApi.on('child_removed', function (d) {
   if ($("[index=" + messageId + "]").parents('.chat-first').length !== 0) {
     console.log('remove Id', messageId);
     $("#" + messageId).remove();
-    for (var i = 0; i < arrId.length; i++) {
-      console.log('qq' + Object.keys(arrId[i])[0]);
+    for (var i = 0; i < arrId.length - 1; i++) {
       if (messageId === Object.keys(arrId[i])[0]) {
         console.log('ss' + arrId[i]);
         var messageContent = arrId[i + 1][Object.keys(arrId[i + 1])[0]];
         var time = new Date(messageContent.date);
 
+        var test = 'a';
         var template = `<div class="chat-first" id=${Object.keys(arrId[i + 1])[0]}><a class="photo" href="/users/kakaoprofile" title="profile"></a>
       <div class="profile">
       <div class="name">${messageContent.id}</div>
-      <div class = "chat" index = ${messageId}>
+      <div class = "chat" index = ${test}>
       <div class="other">${messageContent.message}</div>
       </div>
     </div>
@@ -117,23 +119,25 @@ chatApi.on('child_removed', function (d) {
 
         console.log(template);
 
-        $("[index=" + Object.keys(arrId[i + 1])[0]+ "]").before(template);
+        $("[index=" + Object.keys(arrId[i + 1])[0] + "]").before(template);
         $("[index=" + Object.keys(arrId[i + 1])[0] + "]").remove();
-        $("[index=" + messageId+ "]").find('.chat').attr('index', Object.keys(arrId[i + 1])[0]);
+        $("[index=" + test + "]").attr('index', Object.keys(arrId[i + 1])[0]);
+        arrId.splice(i, 1);
+
         break;
       }
     }
   }
   else {
 
-    if($("[index=" + messageId + "]").children('.date').length){
+    if ($("[index=" + messageId + "]").children('.date').length) {
       for (var i = 0; i < arrId.length - 1; i++) {
         console.log('ll' + messageId);
         console.log('kk' + Object.keys(arrId[i + 1])[0]);
-        if(messageId === Object.keys(arrId[i + 1])[0]){
+        if (messageId === Object.keys(arrId[i + 1])[0]) {
           console.log('dd');
           console.log(arrId[i + 1][Object.keys(arrId[i + 1])[0]].id);
-          if(arrId[i+1][Object.keys(arrId[i + 1])[0]].id === arrId[i][Object.keys(arrId[i])[0]].id) {
+          if (arrId[i + 1][Object.keys(arrId[i + 1])[0]].id === arrId[i][Object.keys(arrId[i])[0]].id) {
             console.log('gg');
             $("[index=" + Object.keys(arrId[i])[0] + "]").append('<div class="date">${time.toLocaleTimeString()}</div>');
           }
@@ -141,11 +145,18 @@ chatApi.on('child_removed', function (d) {
       }
     }
 
+    console.log(messageId);
+    for (var i = 0; i < arrId.length; i++) {
+      if (messageId === Object.keys(arrId[i])[0]) {
+        arrId.splice(i, 1);
+        console.log('dlrjsrk...');
+        break;
+      }
+    }
 
     $("[index=" + messageId + "]").remove();
 
   }
-
 
 
 });

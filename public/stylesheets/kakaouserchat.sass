@@ -92,14 +92,17 @@ $max-width: 200px
     border: 0px solid
     border-radius: 10px
     font-size: 11px
+    overflow-x: hidden
     .other
       @include chat-other
       margin: 0 10px 0 47px
+      word-break: break-all
 
     .me
       @include chat-me
       margin: 0 10px 0 0
       padding: 0 10px
+      word-break: break-all
 
     i
       width: 20px
