@@ -132,14 +132,7 @@ $('.test1').on('click', function(){
 
 
 function test1(){
-    // console.log($('.test2').parent());
-  console.log($('.test3').append('.test4'));
+  console.log($('.test1').children('div'));
 }
 
 test1();
-
-
-/* <div class="test2">
-   <div class="test3"></div>
-   </div>
-*/

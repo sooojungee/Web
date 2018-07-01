@@ -1,0 +1,109 @@
+.chatting {
+  width: 100%;
+  height: calc(100% - 110px);
+  overflow-y: auto;
+  background: #ddd; }
+  .chatting::-webkit-scrollbar {
+    width: 6px; }
+  .chatting::-webkit-scrollbar-thumb {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px; }
+  .chatting .chat-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4px; }
+    .chatting .chat-group .chat {
+      display: flex;
+      padding: 2px; }
+      .chatting .chat-group .chat .profile {
+        padding-right: 8px; }
+        .chatting .chat-group .chat .profile .profile-image {
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          background: #555; }
+      .chatting .chat-group .chat .text-group {
+        margin: auto 0; }
+        .chatting .chat-group .chat .text-group .name {
+          text-align: left;
+          color: #333;
+          font-size: 13px;
+          padding-bottom: 3px; }
+        .chatting .chat-group .chat .text-group .message-group {
+          padding: auto;
+          display: flex; }
+          .chatting .chat-group .chat .text-group .message-group .text {
+            margin: auto 0;
+            max-width: 230px;
+            display: inline-block;
+            background: white;
+            word-break: break-all;
+            padding: 8px;
+            font-size: 12.5px;
+            color: #333; }
+          .chatting .chat-group .chat .text-group .message-group .date {
+            align-self: flex-end;
+            padding: 3px 6px;
+            font-size: 10px;
+            color: #666; }
+          .chatting .chat-group .chat .text-group .message-group .delete {
+            align-self: flex-end;
+            padding: 2px 4px;
+            font-size: 12px;
+            color: #888; }
+    .chatting .chat-group.sender .chat {
+      flex-direction: row-reverse; }
+      .chatting .chat-group.sender .chat .text-group .message-group {
+        margin: 1px 0;
+        flex-direction: row-reverse; }
+        .chatting .chat-group.sender .chat .text-group .message-group .name {
+          text-align: right; }
+        .chatting .chat-group.sender .chat .text-group .message-group .text {
+          background: #333;
+          color: white;
+          font-weight: 300; }
+
+.ui-bar {
+  width: 100%;
+  height: 50px;
+  background: #f8f8f8;
+  display: flex;
+  border-bottom: 1px solid #ddd; }
+  .ui-bar i {
+    width: 30px;
+    height: 30px;
+    margin: 12px;
+    color: black; }
+    .ui-bar i:hover {
+      cursor: pointer; }
+  .ui-bar .text {
+    width: 40px;
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 30px; }
+
+.input-bar {
+  width: 100%;
+  height: 60px;
+  background: white;
+  display: flex; }
+  .input-bar i {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    color: #c8c8c8;
+    text-align: center;
+    line-height: 50px; }
+    .input-bar i:hover {
+      cursor: pointer;
+      color: #666; }
+  .input-bar textarea {
+    flex: 1;
+    margin: 5px;
+    border: none;
+    word-break: break-all;
+    font-size: 13px; }
+
+/*# sourceMappingURL=kakao-test.css.map */

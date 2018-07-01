@@ -1,0 +1,82 @@
+extends kakaolayout
+
+block link
+  link(rel="stylesheet", href="/stylesheets/kakao-test.css")
+
+block content
+  .ui-bar
+    a(href="/users/kakaochat", title="chat")
+      i.material-icons arrow_back
+    .text 홍주원
+    .flex
+    i.material-icons search
+    i.material-icons dehaze
+  .chatting
+    .chat-group
+      .chat
+        .profile
+          .profile-image
+        .text-group
+          .name 손님
+          .message-group
+            .text 안녕하세요
+            .date 오후 12:24
+            .empty
+
+    .chat-group.sender
+          .chat
+            //.profile
+            //  .profile-image
+            .text-group
+              .name
+              .message-group
+                .text ㅎㅎㅎ
+                .date 오후 12: 34
+                .delete x
+                .empty
+  .input-bar
+    i.material-icons add_box
+    textarea.messageInput
+    i.material-icons#sender tag_faces
+    i.material-icons attach_file
+  script(src='https://www.gstatic.com/firebasejs/4.12.1/firebase.js')
+  script(src="/javascripts/firebase.js")
+  script(src="/javascripts/kakao-test.js")
+
+  //script(src='https://www.gstatic.com/firebasejs/4.12.1/firebase.js')
+  //script(src="/javascripts/firebase.js")
+
+    //doctype html
+    //html
+    //  head
+    //    title= title
+    //    link(rel='stylesheet', href='/stylesheets/kakao-test.css')
+    //    script(src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js")
+    //    script(src='/jquery/dist/jquery.min.js')
+    //  body
+    //    .content
+    //      .chatting-field
+    //        .chat-group
+    //          .chat
+    //            .empty
+    //            .delete x
+    //            .date 2018.06.18
+    //            .text-group
+    //              .name 나
+    //              .text asdfasdf asdfasdf asdfasdf asdfasdf asdfasdfasdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf
+    //        .chat-group.receive
+    //          .chat
+    //            .empty
+    //            .date 123123
+    //            .text-group
+    //              .name WT?
+    //              .text asdfasdf asdfasdf asdfasdf asdfasdf asdfasdfasdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdfasdfasdf asdfasdf asdfasdf asdfasdf asdfasdfasdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdfasdfasdf asdfasdf asdfasdf asdfasdf asdfasdfasdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf asdfasdf
+    //            .profile
+    //              .profile-image
+    //
+    //      .message-send-group
+    //        textarea.message
+    //        .send-button S
+    //
+    //    script(src='/firebase.js')
+    //    script(src='/chatting.js')
