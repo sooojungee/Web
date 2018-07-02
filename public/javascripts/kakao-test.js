@@ -1,5 +1,6 @@
 const userId = '이수정';
 const $root = $('.chatting');
+const $room = $('.chatting-room');
 
 const template = `<div class="chat-group">
   <div class="chat">
@@ -18,6 +19,50 @@ const template = `<div class="chat-group">
   </div>
 </div>`;
 
+const dialogueTemplage = `<div class="dialogue-bar">
+  <div class="dialogue">
+    <div class="text">삭제하시겠습니까?</div>
+    <div class="buttons">
+      <div class="button close-button">닫기</div>
+      <div class="button delete-button">삭제하기</div>
+    </div>
+  </div>
+</div>`
+
+function Dialogue() {
+  const dels = {};
+  this.notify = function (id) {
+    $room.find('.dialogue-bar').css('display', 'block');
+    $room.find('.close-button').on('click', function () {
+      $room.find('.dialogue-bar').css('display', 'none');
+      delete dels[id];
+      console.log(dels[id]);
+  
+    })
+    
+    $room.find('.delete-button').on('click', function () {
+      $room.find('.dialogue-bar').css('display', 'none');
+      dels[id] = true;
+      if(dels[id] !== undefined && dels[id])
+        chatApi.deleteMessage(id);
+      console.log(dels[id]);
+    })
+  };
+  
+  this.select = function(id){
+    if(dels[id] !== undefined && dels[id])
+      chatApi.deleteMessage(id);
+  }
+  this.setDels = function(id){
+    dels[id] = false;
+    console.log('sd', Object.keys(dels).length);
+  };
+  
+  return this;
+  
+}
+
+
 function Element(id, isMine) {
   
   const $ele = $(template);
@@ -25,12 +70,15 @@ function Element(id, isMine) {
   
   $ele.attr('id', id);
   
+  
   if (isMine) {
+    dialogue.setDels(id);
     $ele.find('.profile').remove();
     $ele.find('.name').remove();
     $ele.addClass('sender');
     $ele.find('.delete').on('click', function () {
-      chatApi.deleteMessage(id);
+      dialogue.notify(id);
+      dialogue.select(id);
     })
     
   }
@@ -54,10 +102,6 @@ function Element(id, isMine) {
   
   this.getUsername = function () {
     return elementData.id
-  };
-  
-  this.getUserm = function () {
-    return elementData.message
   };
   
   this.getUsertime = function () {
@@ -125,11 +169,8 @@ function Element(id, isMine) {
       prev.next(next);
     if (next != null)
       next.prev(prev);
-    console.log('cc', prev.getUserm());
-    console.log('aa', that.getUserm());
-    // console.log('bb', next.getUserm());
-  
-    if(next === null)
+    
+    if (next === null)
       prev.setVisibledate(true);
   };
   
@@ -176,6 +217,8 @@ $textarea.on('keyup', function (event) {
   if (event.keyCode === 13) {
     console.log('enter !!!', val);
     $textarea.val('');
+    
+    if (val.replace('\n', '') === '') return;
     if (val !== '') chatApi.sendMessage(userId, val);
   }
 });

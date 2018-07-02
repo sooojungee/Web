@@ -1,12 +1,7 @@
-/**
- * Created by hyunwoo on 2018. 6. 28..
- */
-// chatApi.sendMessage({userId}, {message});
-// chatApi.deleteMessage({messageId});
-
-//
-
+const userId = '이수정';
 const $root = $('.chatting');
+const $room = $('.chatting-room');
+
 const template = `<div class="chat-group">
   <div class="chat">
     <div class="profile">
@@ -24,160 +19,156 @@ const template = `<div class="chat-group">
   </div>
 </div>`;
 
+
+
+//
+// if(!deleteMessage.notify(id))
+//   delete deleteMessage;
+
+
 function Element(id, isMine) {
+  
   const $ele = $(template);
   const that = this;
-  console.log('ss', isMine);
-
+  
+  $ele.attr('id', id);
+  
   if (isMine) {
-    $ele.addClass('sender');
     $ele.find('.profile').remove();
     $ele.find('.name').remove();
+    $ele.addClass('sender');
     $ele.find('.delete').on('click', function () {
       chatApi.deleteMessage(id);
     })
+    
   }
-  $ele.attr('id', id);
-  //id 어디로 들어가?????
-
+  
+  if (!isMine) {
+    //isMine === undefined 왜해
+    // console.log(isMine)하면 false만 뜨는데
+    $ele.find('.delete').remove();
+  }
+  
   let elementData = {};
-  if (isMine !== undefined && !isMine) $ele.find('.delete').remove();
-  // message , date , id setting
-
-  this.getTime = function () {
-    return elementData.date;
-  };
-  this.getUserName = function () {
-    return elementData.id;
-  };
-  /**
-   * @param data {Object}
-   * @param data.date {String}
-   * @param data.message {String}
-   * @param data.id {String}
-   */
+  
   this.setMessage = function (data) {
-    elementData = data;
-    // var keys = Object.keys(data);
-    // for(var i = 0 ; i < keys.length ; i ++){
-    //     ele.find(`[type=${keys[i]}]`).text(data[keys[i]]);
-    // }
     $ele.find('.text').text(data.message);
     $ele.find('.name').text(data.id);
     $ele.find('.date').text(data.date);
+    
+    elementData = data;
   };
-
-  // visible setting
-  /**
-   * @param usage {bool}
-   */
-  this.setVisibleTime = function (usage) {
+  
+  
+  this.getUsername = function () {
+    return elementData.id
+  };
+  
+  this.getUsertime = function () {
+    return elementData.date
+  };
+  
+  this.setVisibledate = function (usage) {
     $ele.find('.date').css('display', usage ? 'block' : 'none');
   };
-
-  this.setVisibleName = function (usage) {
+  
+  this.setVisiblename = function (usage) {
     $ele.find('.name').css('display', usage ? 'block' : 'none');
   };
-
-  this.setVisibleProfile = function (usage) {
+  
+  this.setVisibleprofile = function (usage) {
     $ele.find('.profile-image').css('visibility', usage ? 'visible' : 'hidden');
+    
   };
-
-  // mine ?
-
-  // pre
+  
   let prev = null;
   this.prev = function (ele) {
     if (ele === undefined) return prev;
     prev = ele;
     that.update();
-    ////??????
   };
-
-  // next
+  
   let next = null;
   this.next = function (ele) {
     if (ele === undefined) return next;
     next = ele;
     that.update();
   };
-
-  // check Visible
+  
   this.update = function () {
-    // 0. 이전께 내가 보낸 거면서 시간이 같으면 나의 이름과 사진을 삭제한다.
+    // if(prev !== null
+    // && prev.getUsername() === that.getUsername()
+    // && prev.getUsertime() === that.getUsertime()){
+    //   that.setVisiblename(false);
+    //   that.setVisibleprofile(false);
+    //   prev.setVisibledate(false);
+    // }
+    
     if (prev !== null
-      && prev.getUserName() === that.getUserName()
-      && prev.getTime() === that.getTime()) {
-      that.setVisibleName(false);
-      that.setVisibleProfile(false);
+      && prev.getUsername() === that.getUsername()
+      && prev.getUsertime() === that.getUsertime()) {
+      that.setVisiblename(false);
+      that.setVisibleprofile(false);
     }
-
+    
     // 1. 다음꺼와 나의 이름이 같으면서 나의 시간이 같으면 나의 시간을 삭제한다.
     if (next !== null
-      && next.getUserName() === that.getUserName()
-      && next.getTime() === that.getTime()) {
-      that.setVisibleTime(false);
+      && next.getUsername() === that.getUsername()
+      && next.getUsertime() === that.getUsertime()) {
+      that.setVisibledate(false);
     }
-    // 나의 뷰를 구성하면 된다!
+    
+    
   };
-
+  
   this.remove = function () {
-    $ele.remove();
+    $('[id =' + id + ']').remove();
     const prev = that.prev();
     const next = that.next();
     if (prev !== null)
       prev.next(next);
-
-    if (next !== null)
+    if (next != null)
       next.prev(prev);
+    
+    if (next === null)
+      prev.setVisibledate(true);
   };
-
-  // get date, get text ,get user
+  
   $ele.appendTo($root);
   this.$ele = $ele;
+  // 이거 안하면 ㅇ떻게되나
   return this;
+  
+  
 }
 
-//
-
-/** const Util = new function(){
-*   return this;
-* }
- */
-
-
-const userId = '이수정';
-// 메세지 추가 이벤트
 const eles = {};
 let lastElement = null;
 chatApi.on('child_added', function (d) {
-  console.log(d);
   const id = Object.keys(d)[0];
   const data = d[id];
   const date = new Date(data.date);
-  const dateString = `${date.getHours() > 12 ? '오후' : '오전'} ${date.getHours() % 12}:${date.getMinutes()}`;
-  data.date = dateString;
+  const dataString = `${date.getHours() > 12 ? '오후' : '오전'} ${date.getHours() % 12}:${date.getMinutes()}`
+  data.date = dataString;
   const ele = new Element(id, userId === data.id);
   ele.setMessage(data);
-
+  
   if (lastElement !== null) {
     lastElement.next(ele);
     ele.prev(lastElement);
-    //? next prev
   }
-  eles[id] = ele;
   lastElement = ele;
-
+  eles[id] = ele;
+  $(".chatting").scrollTop($(".chatting")[0].scrollHeight);
+  
+  
 });
 
-// 메세지 삭제 이벤트
 chatApi.on('child_removed', function (d) {
   const id = Object.keys(d)[0];
   const ele = eles[id];
   ele.remove();
   delete eles[id];
-
-  // console.log(d);
 });
 
 const $textarea = $('textarea');
@@ -185,8 +176,9 @@ $textarea.on('keyup', function (event) {
   const val = $textarea.val();
   if (event.keyCode === 13) {
     console.log('enter !!!', val);
-    if (val !== '') chatApi.sendMessage(userId, val);
     $textarea.val('');
-    //?? 안됨
+    
+    if (val.replace('\n', '') === '') return;
+    if (val !== '') chatApi.sendMessage(userId, val);
   }
 });

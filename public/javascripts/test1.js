@@ -58,3 +58,8 @@
 // // ele.remove();
 // console.log(Object.keys(data));
 // console.log(data);
+
+
+const test = {};
+test['🎼'] = 111;
+console.log(test['🎼']);
