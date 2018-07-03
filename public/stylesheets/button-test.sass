@@ -1,0 +1,139 @@
+
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  padding: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  border-collapse: collapse
+  background: #ccc
+
+.click-button
+  position: fixed
+  width: 40px
+  height: 40px
+  bottom: 70px
+  left: 60px
+  border: 4px solid rgba(98, 33, 234, 0.8)
+  z-index: 10
+  border-radius: 4px
+  background: white
+  cursor: pointer
+  i
+    color: rgba(98, 33, 234, 0.8)
+    font-size: 32px
+    font-weight: 600
+.header
+  width: 100%
+  height: 56px
+  background: rgb(98, 33, 234)
+  color: white
+  line-height: 60px
+  font-size: 20px
+  padding-left: 16px
+
+.background
+  width: 1200px
+  height: 600px
+  background: #ccc
+  display: flex
+  padding: 4px
+  .nav
+    color: #333
+    height: 100%
+    //width: 400px
+    background: white
+    //border-right: 4px solid #ccc
+    width: 0px
+    pointer-events: none
+    transition: width 0.4s
+    &[status=open]
+      width: 400px
+      border-right: 4px solid #ccc
+      transition: width 0.4s
+      pointer-events: all
+
+
+    .content-box
+      padding: 12px
+      width: 100%
+      height: 160px
+      background: white
+      .header-text
+        width: 100%
+        height: 30px
+        padding: 4px
+
+      .button-box
+        width: 100%
+        height: 120px
+        overflow-y: auto
+        .button
+          display: flex
+          margin: 4px 0
+          padding: 8px
+          width: 100%
+          height: 50px
+          align-items: center
+          cursor: pointer
+          .i
+            width: 24px
+            height: 24px
+            border: 2px solid #999
+            border-radius: 3px
+
+          .text
+            padding: 8px 16px
+            height: 100%
+            font-size: 16px
+
+    .line
+      width: 100%
+      height: 1px
+      background: #ddd
+      margin: 8px 0
+  .content
+    width: 100%
+    height: 100%
+    .main-content
+      width: 100%
+      height: 400px
+      background: white
+    .sub-content
+      width: 100%
+      height: 192px
+      background: white
+    .main-content
+      overflow-y : auto
+      .header
+        padding: 8px
+        .search-bar
+          display: flex
+          width: 240px
+          height: 40px
+          position: relative
+          input
+            width: 240px
+            border-radius: 2px
+            border: none
+            font-size: 20px
+          i
+            position: absolute
+            line-height: 32px
+            font-size: 24px
+            font-weight: 600
+            padding: 4px
+            right: 8px
+            color: #666
+      .text
+        padding: 24px
+        overflow-y: auto
+        line-height: 24px
+
+
+    .sub-content
+      border-top: 4px solid #ccc
+

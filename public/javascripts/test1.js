@@ -63,3 +63,11 @@
 const test = {};
 test['🎼'] = 111;
 console.log(test['🎼']);
+
+var text = 'hi my name';
+var array = text.split(' ');
+for(var i = 0; i < array.length; i++){
+  array[i] = array[i].concat(' ');
+}
+
+console.log(array);

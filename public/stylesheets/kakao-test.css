@@ -11,6 +11,9 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none; }
+  .modal[status=open] {
+    opacity: 1;
+    pointer-events: all; }
   .modal .modal-content {
     width: 300px;
     padding: 4px;

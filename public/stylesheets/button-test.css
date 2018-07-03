@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-collapse: collapse;
+  background: #ccc; }
+
+.click-button {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 70px;
+  left: 60px;
+  border: 4px solid rgba(98, 33, 234, 0.8);
+  z-index: 10;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer; }
+  .click-button i {
+    color: rgba(98, 33, 234, 0.8);
+    font-size: 32px;
+    font-weight: 600; }
+
+.header {
+  width: 100%;
+  height: 56px;
+  background: #6221ea;
+  color: white;
+  line-height: 60px;
+  font-size: 20px;
+  padding-left: 16px; }
+
+.background {
+  width: 1200px;
+  height: 600px;
+  background: #ccc;
+  display: flex;
+  padding: 4px; }
+  .background .nav {
+    color: #333;
+    height: 100%;
+    background: white;
+    width: 0px;
+    pointer-events: none;
+    transition: width 0.4s; }
+    .background .nav[status=open] {
+      width: 400px;
+      border-right: 4px solid #ccc;
+      transition: width 0.4s;
+      pointer-events: all; }
+    .background .nav .content-box {
+      padding: 12px;
+      width: 100%;
+      height: 160px;
+      background: white; }
+      .background .nav .content-box .header-text {
+        width: 100%;
+        height: 30px;
+        padding: 4px; }
+      .background .nav .content-box .button-box {
+        width: 100%;
+        height: 120px;
+        overflow-y: auto; }
+        .background .nav .content-box .button-box .button {
+          display: flex;
+          margin: 4px 0;
+          padding: 8px;
+          width: 100%;
+          height: 50px;
+          align-items: center;
+          cursor: pointer; }
+          .background .nav .content-box .button-box .button .i {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #999;
+            border-radius: 3px; }
+          .background .nav .content-box .button-box .button .text {
+            padding: 8px 16px;
+            height: 100%;
+            font-size: 16px; }
+    .background .nav .line {
+      width: 100%;
+      height: 1px;
+      background: #ddd;
+      margin: 8px 0; }
+  .background .content {
+    width: 100%;
+    height: 100%; }
+    .background .content .main-content {
+      width: 100%;
+      height: 400px;
+      background: white; }
+    .background .content .sub-content {
+      width: 100%;
+      height: 192px;
+      background: white; }
+    .background .content .main-content {
+      overflow-y: auto; }
+      .background .content .main-content .header {
+        padding: 8px; }
+        .background .content .main-content .header .search-bar {
+          display: flex;
+          width: 240px;
+          height: 40px;
+          position: relative; }
+          .background .content .main-content .header .search-bar input {
+            width: 240px;
+            border-radius: 2px;
+            border: none;
+            font-size: 20px; }
+          .background .content .main-content .header .search-bar i {
+            position: absolute;
+            line-height: 32px;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 4px;
+            right: 8px;
+            color: #666; }
+      .background .content .main-content .text {
+        padding: 24px;
+        overflow-y: auto;
+        line-height: 24px; }
+    .background .content .sub-content {
+      border-top: 4px solid #ccc; }
+
+/*# sourceMappingURL=button-test.css.map */

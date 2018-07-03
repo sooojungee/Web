@@ -19,12 +19,7 @@ const template = `<div class="chat-group">
   </div>
 </div>`;
 
-
-
-//
-// if(!deleteMessage.notify(id))
-//   delete deleteMessage;
-
+const modal = new CreatModal($('.modal'));
 
 function Element(id, isMine) {
   
@@ -38,7 +33,15 @@ function Element(id, isMine) {
     $ele.find('.name').remove();
     $ele.addClass('sender');
     $ele.find('.delete').on('click', function () {
-      chatApi.deleteMessage(id);
+      modal.open(
+        {
+          headerText: '메세지를 지울거예요',
+          contentText: '진짜?',
+          positiveText: 'DELETE',
+          negativeText: 'CANCEL'
+        },
+        chatApi.deleteMessage(id)
+      );
     })
     
   }
@@ -136,11 +139,47 @@ function Element(id, isMine) {
   
   $ele.appendTo($root);
   this.$ele = $ele;
-  // 이거 안하면 ㅇ떻게되나
   return this;
   
   
 }
+
+
+function CreatModal(targetClass) {
+  
+  const $modal = $(targetClass);
+  const $buttonPositive = $modal.find('.button.positive');
+  const $buttonNegative = $modal.find('.button.negative');
+  const that = this;
+  const $header = $('.header');
+  const $text = $('.text');
+  let positiveEvent = null;
+  
+  this.open = function (option, event) {
+    console.log(event);
+    positiveEvent = event;
+    $header.text(option.headerText);
+    $text.text(option.contentText);
+    $buttonPositive.text(option.positiveText);
+    $buttonNegative.text(option.negativeText);
+    $modal.attr('status', 'open');
+    
+  };
+  
+  this.close = function () {
+    $modal.attr('status', 'close');
+  };
+  
+  $buttonPositive.on('click', function () {
+    // if(positiveEvent !== null) positiveEvent();
+    that.close();
+  });
+  
+  $buttonNegative.on('click', function () {
+    that.close();
+  });
+  
+};
 
 const eles = {};
 let lastElement = null;
@@ -159,7 +198,7 @@ chatApi.on('child_added', function (d) {
   }
   lastElement = ele;
   eles[id] = ele;
-  $(".chatting").scrollTop($(".chatting")[0].scrollHeight);
+  $('.chatting').scrollTop($('.chatting')[0].scrollHeight);
   
   
 });
@@ -182,3 +221,4 @@ $textarea.on('keyup', function (event) {
     if (val !== '') chatApi.sendMessage(userId, val);
   }
 });
+

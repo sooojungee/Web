@@ -70,4 +70,10 @@ router.get('/jsonfilter', function(req, res, next) {
 router.get('/kakao-test', function(req, res, next) {
   res.render('kakao-test', {title: 'test'});
 });
+
+
+router.get('/button-test', function(req, res, next) {
+  res.render('button-test', {title: 'test'});
+});
+
 module.exports = router;
