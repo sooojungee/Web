@@ -1,159 +1,171 @@
 const $clickType = $('.click-button i');
 const find = new FindItems();
-const text = $('#text').html();
-
-// $('#text').
+const text = $('#main-text').html();
 
 function FindItems() {
   const style = new StyleItems();
-  let select = null;
+  
+  let selectRadio = null;
+  let originText = [];
   let sliceText = [];
   const that = this;
   let input = null;
-  let checkitem = [];
-  let optionString = '';
-  this.setRadioSelected = function (selection) {
-    console.log(selection);
-    console.log(text);
-    select = Number(selection);
-    // that.setRadio();
-  };
+  let mainViewText = [];
+  let subViewText = [];
+  let $subId = null;
   
-  this.inputSetting = function (val) {
-    console.log(val);
-    input = val;
-    // that.search();
-    sliceText = [];
-    
+  this.setRadioSelected = function (selection) {
+    selectRadio = Number(selection);
     that.setRadio();
     that.search();
-    console.log(sliceText.length);
+  };
+  
+  this.setCheckSelected = function (selection, usage) {
+    style.checkOption(selection, usage);
+    that.search();
+  };
+  
+  this.setInput = function (val) {
+    input = val;
+    that.search();
   };
   
   this.setRadio = function () {
-    if (select === 0) {
-      for (var i = 0; i < text.length; i++) {
-        sliceText[i] = text[i];
-      }
-    }
-    else if (select === 1) {
-      sliceText = text.split(' ');
-      for (var i = 0; i < sliceText.length; i++) {
-        sliceText[i] = sliceText[i].concat(' ');
-      }
-    }
-    else if (select === 2) {
-      sliceText = text.split('.');
-      for (var i = 0; i < sliceText.length; i++) {
-        sliceText[i] = sliceText[i].concat('.');
-      }
-    }
-    else {
+    originText = [];
+    sliceText = [];
     
+    if (selectRadio === 0) {
+      for (var i = 0; i < text.length; i++) {
+        originText[i] = text[i];
+        sliceText[i] = originText[i];
+      }
+    }
+    else if (selectRadio === 1) {
+      originText = text.split(/([,?. ])/);
+      console.log(originText);
+      for (var i = 0; i < originText.length; i++) {
+        sliceText[i] = originText[i];
+      }
+    }
+    else if (selectRadio === 2) {
+      originText = text.split(/([.*?、])/g);
+      console.log(originText);
+      for (var i = 0; i < originText.length / 2 - 1; i++) {
+        sliceText[i] = originText[i * 2].concat(originText[i * 2 + 1]);
+      }
     }
   };
   
   this.search = function () {
-    // console.log('gg', input);
-    // console.log(sliceText[0]);
+    mainViewText = [];
+    subViewText = [];
+    
+    const subText = 'sub-text';
     for (var i = 0; i < sliceText.length; i++) {
-      console.log('check!',sliceText[i].includes(input));
       if (sliceText[i].includes(input)) {
-        console.log('optionString a', optionString);
-        // console.log('ss', sliceText[i]);
-        // '<span style="' + string + '">' + text[i] + '</span>'
-        sliceText[i] = `<span style = "${optionString}"> ${sliceText[i]} </span>`;
+        subViewText[i] = `<div class = "${subText}" id = "${i}">${sliceText[i]}</div>`;
+        mainViewText[i] = `<span id = "${i}">${sliceText[i]}</span>`;
       }
-    }
-    if (sliceText.length > 0)
-      $('#text').html(sliceText.join('').toString());
-    if (input === '')
-      $('#text').html(text);
-  };
-  
-  this.setCheckSelected = function (option, usage) {
-    console.log('zz',usage);
-    if (usage) {
-      const a = style.checkOnMessage(option);
-      optionString += a;
-      console.log('234',optionString);
-    }
-    else {
-      console.log('sdfaaaa ',option);
-      const b = style.checkOffMessage(option);
-      console.log('bbbb', b);
-      optionString = optionString.replace(b, "");
+      else
+        mainViewText[i] = sliceText[i];
     }
     
-    console.log(optionString);
-    that.search();
+    if (sliceText.length > 0) {
+      $('#main-text').html(mainViewText.join('').toString());
+      $('#sub-text').html(subViewText.join('').toString());
+    }
+    if (input === '')
+      $('#main-text').html(text);
+  
+    style.checkMessage();
+    
   };
   
-  this.checkItems = function () {
+  this.findSubText = function (id) {
+    $subId = $(`#${id}`);
   
+    style.checkMessage();
+  
+    $('span').css('color', 'black');
+  
+    if ($subId !== null && $subId.css('color') !== 'rgb(255, 0, 0)') {
+      console.log($subId);
+      $subId.css('color', 'red');
+      var offset = $subId.offset();
+      var winH = $('.main-content').height();
+      $('.main-content').animate({scrollTop: (offset.top - winH / 2)}, 400);
+    }
+    
   };
-  
   
 };
 
 function StyleItems() {
-  const array = [];
   
-  this.checkOnMessage = function (op) {
-    console.log('on', array);
-    const option = Number(op);
-    
-    for (var i = 0; i < array.length; i++) {
-      if (array[i] === option) {
-        return 'ss';
-      }
-    }
-    array.push(option);
-  
-    if (option === 0) {
-      console.log('0');
-      return 'text-decoration: underline; ';
-    }
-    else if (option === 1) {
-      console.log('1');
-      return 'background: yellow; ';
-    }
-    else if (option === 2) {
-      console.log('2');
-      return 'font-weight: 600; ';
-    }
-    else if (option === 3) {
-      console.log('3');
-      return 'font-style: italic; ';
-    }
-  
-    console.log('skdfuh', array);
-  
+  const that = this;
+  let optionObject = {
+    0: false,
+    1: false,
+    2: false,
+    3: false
   };
   
-  this.checkOffMessage = function (op) {
-    const option = Number(op);
-    console.log('off', array);
-    for (var i = 0; i < array.length; i++) {
-      if (array[i] === option) {
-        delete array[i];
-        if (option === 0) {
-          return 'text-decoration: underline; ';
-        }
-        else if (option === 1) {
-          return 'background: yellow; ';
-        }
-        else if (option === 2) {
-          return 'font-weight: 600; ';
-        }
-        else if (option === 3) {
-          return 'font-style: italic; ';
-        }
-      }
+  this.checkOption = function (op, usage) {
+    if(usage){
+      optionObject[op] = true;
+    }
+    else if(!usage){
+      optionObject[op] = false;
+    }
+  };
+  
+  
+  this.checkOnMessage = function (i) {
+    
+    if (i === 0) {
+      $('span').css('text-decoration', 'underline');
+    }
+    if (i === 1) {
+      $('span').css('background', 'yellow');
+    }
+    if (i === 2) {
+      $('span').css('font-weight', '600');
+    }
+    if (i === 3) {
+      $('span').css('font-style', 'italic');
+    }
+  };
+  
+  this.checkOffMessage = function (i) {
+    
+    if (i === 0) {
+      $('span').css('text-decoration', 'none');
+    }
+    if (i === 1) {
+      $('span').css('background', 'white');
+    }
+    if (i === 2) {
+      $('span').css('font-weight', '400');
+    }
+    if (i === 3) {
+      $('span').css('font-style', 'normal');
     }
     
-    return;
-  }
+    
+  };
+  
+  this.checkMessage = function () {
+    
+    for(var i = 0; i < Object.keys(optionObject).length; i++){
+      if(optionObject[i]){
+        that.checkOnMessage(i);
+      }
+      else {
+        that.checkOffMessage(i);
+      }
+    }
+  };
+  
   
 }
 
@@ -196,9 +208,13 @@ $('.check').on('click', function () {
 });
 
 
+$(document).on('click', '.sub-text', function () {
+  find.findSubText($(this).attr('id'));
+});
+
 $('input').on('keyup', function () {
   const val = $('input').val();
-  find.inputSetting(val);
+  find.setInput(val);
 });
 
 
