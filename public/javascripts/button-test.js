@@ -1,10 +1,11 @@
 const $clickType = $('.click-button i');
 const find = new FindItems();
 const text = $('#main-text').html();
+const $mainContent = $('.main-content');
 
 function FindItems() {
   const style = new StyleItems();
-  
+  let selectId = null;
   let selectRadio = null;
   let originText = [];
   let sliceText = [];
@@ -30,6 +31,11 @@ function FindItems() {
     that.search();
   };
   
+  this.setSubText = function (id) {
+    selectId = id;
+    that.findSubText();
+  };
+  
   this.setRadio = function () {
     originText = [];
     sliceText = [];
@@ -42,14 +48,12 @@ function FindItems() {
     }
     else if (selectRadio === 1) {
       originText = text.split(/([,?. ])/);
-      console.log(originText);
       for (var i = 0; i < originText.length; i++) {
         sliceText[i] = originText[i];
       }
     }
     else if (selectRadio === 2) {
       originText = text.split(/([.*?、])/g);
-      console.log(originText);
       for (var i = 0; i < originText.length / 2 - 1; i++) {
         sliceText[i] = originText[i * 2].concat(originText[i * 2 + 1]);
       }
@@ -76,27 +80,24 @@ function FindItems() {
     }
     if (input === '')
       $('#main-text').html(text);
-  
+    
     style.checkMessage();
+    that.findSubText();
     
   };
   
-  this.findSubText = function (id) {
-    $subId = $(`#${id}`);
-  
-    style.checkMessage();
-  
-    $('span').css('color', 'black');
-  
-    if ($subId !== null && $subId.css('color') !== 'rgb(255, 0, 0)') {
-      console.log($subId);
-      $subId.css('color', 'red');
-      var offset = $subId.offset();
-      var winH = $('.main-content').height();
-      $('.main-content').animate({scrollTop: (offset.top - winH / 2)}, 400);
+  this.findSubText = function () {
+    if (selectId !== null) {
+      $subId = $(`#${selectId}`);
+      $('span').removeClass('text-color');
+      
+      if ($subId !== null && !$subId.hasClass('text-color')) {
+        $subId.addClass('text-color');
+        $mainContent.animate({scrollTop: ($subId.offset().top - $mainContent.height() / 2)}, 400);
+      }
+      
     }
-    
-  };
+  }
   
 };
 
@@ -111,10 +112,10 @@ function StyleItems() {
   };
   
   this.checkOption = function (op, usage) {
-    if(usage){
+    if (usage) {
       optionObject[op] = true;
     }
-    else if(!usage){
+    else if (!usage) {
       optionObject[op] = false;
     }
   };
@@ -123,41 +124,42 @@ function StyleItems() {
   this.checkOnMessage = function (i) {
     
     if (i === 0) {
-      $('span').css('text-decoration', 'underline');
+      $('span').addClass('text-decoration');
     }
     if (i === 1) {
-      $('span').css('background', 'yellow');
+      $('span').addClass('background-color');
     }
     if (i === 2) {
-      $('span').css('font-weight', '600');
+      $('span').addClass('font-weight');
     }
     if (i === 3) {
-      $('span').css('font-style', 'italic');
+      $('span').addClass('font-style');
     }
   };
   
   this.checkOffMessage = function (i) {
     
     if (i === 0) {
-      $('span').css('text-decoration', 'none');
+      $('span').removeClass('text-decoration');
     }
     if (i === 1) {
-      $('span').css('background', 'white');
+      $('span').removeClass('background-color');
     }
     if (i === 2) {
-      $('span').css('font-weight', '400');
+      $('span').removeClass('font-weight');
     }
     if (i === 3) {
-      $('span').css('font-style', 'normal');
+      $('span').removeClass('font-style');
     }
     
     
   };
   
   this.checkMessage = function () {
+    console.log('checkMessage');
     
-    for(var i = 0; i < Object.keys(optionObject).length; i++){
-      if(optionObject[i]){
+    for (var i = 0; i < Object.keys(optionObject).length; i++) {
+      if (optionObject[i]) {
         that.checkOnMessage(i);
       }
       else {
@@ -209,7 +211,7 @@ $('.check').on('click', function () {
 
 
 $(document).on('click', '.sub-text', function () {
-  find.findSubText($(this).attr('id'));
+  find.setSubText($(this).attr('id'));
 });
 
 $('input').on('keyup', function () {

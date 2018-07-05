@@ -1,6 +1,21 @@
 * {
   box-sizing: border-box; }
 
+.text-decoration {
+  text-decoration: underline; }
+
+.background-color {
+  background: yellow; }
+
+.font-weight {
+  font-weight: 600; }
+
+.font-style {
+  font-style: italic; }
+
+.text-color {
+  color: red; }
+
 body {
   margin: 0;
   padding: 0;
@@ -134,10 +149,10 @@ body {
       border-top: 4px solid #ccc;
       border-left: 8px; }
       .background .content .sub-content::-webkit-scrollbar {
-        width: 4px; }
+        width: 18px; }
       .background .content .sub-content::-webkit-scrollbar-thumb {
         background: #ccc;
-        border: 1px solid white;
+        border: 8px solid white;
         border-radius: 5px; }
 
 /*# sourceMappingURL=button-test.css.map */

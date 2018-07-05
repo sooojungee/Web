@@ -82,9 +82,12 @@ let sliceText = [];
 // var tokens = stt.match(/[^\.]+\.?|\//g);
 // console.log(tokens);
 
+var foo = {
+  name: 'foo',
+  age: 42
+}
 
-var arr1 = 'hello. my name?; is lee';
-var token = arr1.split(/([.|?|!])/g);
-var tokens = arr1.split(/'. '/g);
-
-console.log(tokens);
+var prop;
+for (prop in foo) {
+  console.log(prop, foo.prop);
+}
