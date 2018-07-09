@@ -1,175 +1,446 @@
-
 *
   box-sizing: border-box
 
-.text-decoration
-  text-decoration: underline
-
-.background-color
-  background: yellow
-
-.font-weight
-  font-weight: 600
-
-.font-style
-  font-style: italic
-
-.text-color
-  color: red
-
-
-
 body
-  margin: 0
   padding: 0
+  margin: 0
+  height: 100vh
+  background: #555
   display: flex
-  justify-content: center
   align-items: center
-  border-collapse: collapse
-  background: #ccc
-
-.content-box
-  padding: 8px
+  justify-content: center
 
 
-.click-button
-  position: fixed
-  width: 40px
-  height: 40px
-  bottom: 70px
-  left: 70px
-  border: 4px solid rgba(98, 33, 234, 0.8)
-  z-index: 10
-  border-radius: 10px
-  background: white
-  cursor: pointer
-  i
-    color: rgba(98, 33, 234, 0.8)
-    font-size: 32px
-    font-weight: 600
-
-.header
-  width: 100%
-  height: 56px
-  background: rgb(98, 33, 234)
-  color: white
-  line-height: 60px
-  font-size: 20px
-  padding-left: 16px
-
-.background
+.section
   width: 1200px
   height: 600px
-  background: #ccc
+  position: relative
+  background: #f0f0f0
   display: flex
-  padding: 4px
-  .nav
-    color: #333
+
+  .button-sector-opener
+    z-index: 3
+    width: 40px
+    height: 40px
+    position: absolute
+    left: 16px
+    bottom: 16px
+    .i
+      background: mediumpurple
+      color: #fff
+      border-radius: 50%
+      width: 100%
+      height: 100%
+      line-height: 40px
+      text-align: center
+  .left-sector
+    width: 200px
     height: 100%
-    //width: 400px
-    background: white
-    //border-right: 4px solid #ccc
-    width: 0px
-    pointer-events: none
-    transition: width 0.4s
-    &[status=open]
-      width: 400px
-      border-right: 4px solid #ccc
-      transition: width 0.4s
-      pointer-events: all
-
-    .header-text
-      width: 100%
-      height: 30px
-      padding: 16px
-
-    .button
-      display: flex
-      //margin: 4px 0
-      padding: 16px
-      width: 100%
-      height: 48px
-      align-items: center
-      cursor: pointer
-      .i
-        width: 24px
-        height: 24px
-        border: 2px solid #999
-        border-radius: 3px
-
-      .text
-
-        padding-left: 16px
-        height: 100%
-        font-size: 16px
-
-    .line
-      width: 100%
-      height: 1px
-      background: #ddd
-      //margin: 4px 0
-  .content
-    width: 100%
-    height: 100%
-    .header
-      padding: 8px
-      .search-bar
-        display: flex
-        width: 260px
+    background: #fff
+    position: relative
+    overflow-x: hidden
+    overflow-y: auto
+    .command-zone
+      padding: 16px 0px
+      .separator
+        padding: 24px 8px 0
+        color: #888
+        font-size: 12px
+        line-height: 20px
+      .component
         height: 40px
-        position: relative
-        padding-left: 16px
-        input
-          width: 260px
-          border-radius: 2px
-          border: none
-          font-size: 20px
-          padding-right: 45px
-        i
-          position: absolute
-          line-height: 32px
-          font-size: 24px
-          font-weight: 600
-          padding: 4px
-          right: 8px
-          color: #666
-    .main-content
-      width: 100%
-      height: 400px
-      background: white
-      overflow-y: auto
-      border: 16px solid white
-      border-left: 8px solid white
-      border-right: 8px solid white
-      &::-webkit-scrollbar
-        width: 4px
-      &::-webkit-scrollbar-thumb
-        background: #ccc
-        border: 1px solid white
-        border-radius: 5px
-      .content-box
-        height: 386px
-        //overflow-y: auto
+        line-height: 40px
+        display: flex
+        cursor: pointer
+        &:hover
+          background: #f6f6f6
+        .icon
+          width: 40px
+          height: 40px
+          position: relative
+        .check
+          position: relative
+          .outer
+            z-index: 0
+            position: absolute
+            $size: 24px
+            left: calc(50% - #{$size / 2})
+            top: calc(50% - #{$size / 2})
+            width: $size
+            height: $size
+            border-radius: 4px
+            border: solid 2px dodgerblue
+            transition: background .2s
+          .i
+            z-index: 1
+            position: absolute
+            color: dodgerblue
+            font-size: 16px
+            font-weight: 900
+            color: #fff
+        //transform: scale(0) !important
+        //transition: color .2s, transform .2s
+
+        .radio
+          .outer-circle
+            position: absolute
+            $size: 20px
+            left: calc(50% - #{$size / 2})
+            top: calc(50% - #{$size / 2})
+            width: $size
+            height: $size
+            border-radius: 50%
+            border: solid 2px dodgerblue
+          .inner-circle
+            position: absolute
+            $size: 8px
+            left: calc(50% - #{$size / 2})
+            top: calc(50% - #{$size / 2})
+            width: $size
+            height: $size
+            border-radius: 50%
+            background: dodgerblue
+            opacity: 0
+            transform: scale(0)
+            transition: opacity .2s, transform .2s
+
+        &[selected]
+          .check
+            .outer
+              background: dodgerblue
+            .i.material-icons
+              //transform: scale(1) !important
+              color: #fff
+          .inner-circle
+            transform: scale(1)
+            opacity: 1
+            background: dodgerblue
+        .i.material-icons
+          line-height: inherit
+          height: inherit
+          width: 40px
+          text-align: center
 
         .text
-          text-align: justify
-          line-height: 24px
-    .sub-content
-      width: 100%
+          padding: 0 12px
+          flex: 1
+          line-height: inherit
+      .check-button
+
+      .radio-group
+        .radio-button
+
+  .right-sector
+    flex: 1
+    height: 100%
+    background: #fff
+    .text-zone
+      overflow-x: hidden
       overflow-y: auto
-      height: 136px
-      padding: 8px
-      line-height: 24px
+      height: calc(100% - 256px)
+      padding: 16px
+    .result-zone
+      overflow-x: hidden
+      overflow-y: auto
+      height: 200px
 
-      background: white
-      //border: 8px solid white
-      border-top: 4px solid #ccc
-      border-left: 8px
+  &[mode=hide]
+    .left-sector
+      width: 0
 
-      &::-webkit-scrollbar
-        width: 18px
-      &::-webkit-scrollbar-thumb
-        background: #ccc
-        border: 8px solid white
-        border-radius: 5px
+.nav
+  height: 56px
+  background: mediumpurple
+  padding: 8px
+  input
+    height: 100%
+    width: 300px
+    outline: none
+    border: none
+    background: rgba(255, 255, 255, 0.3)
+    transition: background .2s
+    color: #fff
+    padding: 8px 16px
+    line-height: 40px
+    font-size: 16px
+    font-weight: 600
+    &:focus, &:active
+      background: rgba(255, 255, 255, 0.2)
 
+.text-zone
+  .highlight
+    display: inline-block
+    vertical-align: top
+
+    &.background
+      background: aquamarine
+    &.underline
+      text-decoration: underline
+    &.italic
+      font-style: italic
+    &.bold
+      font-weight: 900
+.result-zone
+  .item
+    padding : 8px
+    cursor: pointer
+    &:hover
+      text-decoration: underline
+
+
+
+
+//*
+//  box-sizing: border-box
+//
+//body
+//  margin: 0
+//  padding: 0
+//  width: 100%
+//  height: 100vh
+//  background: #555
+//  display: flex
+//  justify-content: center
+//  align-items: center
+//
+//.nav
+//  height: 56px
+//  background: mediumpurple
+//  padding: 8px
+//  input
+//    color: #fff
+//    width: 300px
+//    height: 100%
+//    outline: none
+//    border: none
+//    font-size: 16px
+//    line-height: 40px
+//    background: rgba(255, 255, 255, 0.3)
+//    &:active
+//      background: rgba(255, 255, 255, 0.2)
+//
+//.section
+//  width: 1200px
+//  height: 600px
+//  background: #fff
+//  position: relative
+//  display: flex
+//  .button-sector-opener
+//    position: absolute
+//    left: 16px
+//    bottom: 16px
+//    z-index: 3
+//    cursor: pointer
+//
+//  .left-sector
+//    width: 200px
+//    height: 100%
+//    background: #fff
+//    overflow-y: auto
+//    .command-zone
+//      padding: 8px 8px
+//      .separator
+//        padding: 24px 0 0 0
+//        color: #888
+//        font-size: 16px
+//        height: 20px
+//        line-height: 20px
+//        .check-group
+//          .component
+//            width: 100%
+//            height: 40px
+//            line-height: 40px
+//            cursor: pointer
+//            .check
+//              display: flex
+//              .outer
+//
+//              .i.material-icons
+//
+//
+//
+//
+//
+//
+//  .right-sector
+//    flex: 1
+//    height: 100%
+//    background: #fff
+//
+//
+//
+//
+////*
+////  box-sizing: border-box
+////
+////.text-decoration
+////  text-decoration: underline
+////
+////.background-color
+////  background: yellow
+////
+////.font-weight
+////  font-weight: 600
+////
+////.font-style
+////  font-style: italic
+////
+////.text-color
+////  color: red
+////
+////
+////
+////body
+////  margin: 0
+////  padding: 0
+////  display: flex
+////  justify-content: center
+////  align-items: center
+////  border-collapse: collapse
+////  background: #ccc
+////
+////.content-box
+////  padding: 8px
+////
+////
+////.click-button
+////  position: fixed
+////  width: 40px
+////  height: 40px
+////  bottom: 70px
+////  left: 70px
+////  border: 4px solid rgba(98, 33, 234, 0.8)
+////  z-index: 10
+////  border-radius: 10px
+////  background: white
+////  cursor: pointer
+////  i
+////    color: rgba(98, 33, 234, 0.8)
+////    font-size: 32px
+////    font-weight: 600
+////
+////.header
+////  width: 100%
+////  height: 56px
+////  background: rgb(98, 33, 234)
+////  color: white
+////  line-height: 60px
+////  font-size: 20px
+////  padding-left: 16px
+////
+////.background
+////  width: 1200px
+////  height: 600px
+////  background: #ccc
+////  display: flex
+////  padding: 4px
+////  .nav
+////    color: #333
+////    height: 100%
+////    //width: 400px
+////    background: white
+////    //border-right: 4px solid #ccc
+////    width: 0px
+////    pointer-events: none
+////    transition: width 0.4s
+////    &[status=open]
+////      width: 400px
+////      border-right: 4px solid #ccc
+////      transition: width 0.4s
+////      pointer-events: all
+////
+////    .header-text
+////      width: 100%
+////      height: 30px
+////      padding: 16px
+////
+////    .button
+////      display: flex
+////      //margin: 4px 0
+////      padding: 16px
+////      width: 100%
+////      height: 48px
+////      align-items: center
+////      cursor: pointer
+////      .i
+////        width: 24px
+////        height: 24px
+////        border: 2px solid #999
+////        border-radius: 3px
+////
+////      .text
+////
+////        padding-left: 16px
+////        height: 100%
+////        font-size: 16px
+////
+////    .line
+////      width: 100%
+////      height: 1px
+////      background: #ddd
+////      //margin: 4px 0
+////  .content
+////    width: 100%
+////    height: 100%
+////    .header
+////      padding: 8px
+////      .search-bar
+////        display: flex
+////        width: 260px
+////        height: 40px
+////        position: relative
+////        padding-left: 16px
+////        input
+////          width: 260px
+////          border-radius: 2px
+////          border: none
+////          font-size: 20px
+////          padding-right: 45px
+////        i
+////          position: absolute
+////          line-height: 32px
+////          font-size: 24px
+////          font-weight: 600
+////          padding: 4px
+////          right: 8px
+////          color: #666
+////    .main-content
+////      width: 100%
+////      height: 400px
+////      background: white
+////      overflow-y: auto
+////      border: 16px solid white
+////      border-left: 8px solid white
+////      border-right: 8px solid white
+////      &::-webkit-scrollbar
+////        width: 4px
+////      &::-webkit-scrollbar-thumb
+////        background: #ccc
+////        border: 1px solid white
+////        border-radius: 5px
+////      .content-box
+////        height: 386px
+////        //overflow-y: auto
+////
+////        .text
+////          text-align: justify
+////          line-height: 24px
+////    .sub-content
+////      width: 100%
+////      overflow-y: auto
+////      height: 136px
+////      padding: 8px
+////      line-height: 24px
+////
+////      background: white
+////      //border: 8px solid white
+////      border-top: 4px solid #ccc
+////      border-left: 8px
+////
+////      &::-webkit-scrollbar
+////        width: 18px
+////      &::-webkit-scrollbar-thumb
+////        background: #ccc
+////        border: 8px solid white
+////        border-radius: 5px
+////

@@ -76,4 +76,8 @@ router.get('/button-test', function(req, res, next) {
   res.render('button-test', {title: 'test'});
 });
 
+router.get('/fractal', function(req, res, next) {
+  res.render('fractal', {title: 'test'});
+});
+
 module.exports = router;

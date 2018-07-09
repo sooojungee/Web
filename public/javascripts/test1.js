@@ -82,12 +82,64 @@ let sliceText = [];
 // var tokens = stt.match(/[^\.]+\.?|\//g);
 // console.log(tokens);
 
-var foo = {
-  name: 'foo',
-  age: 42
-}
+// var foo = {
+//   name: 'foo',
+//   age: 42
+// }
+//
+// var prop;
+// for (prop in foo) {
+//   console.log(prop, foo.prop);
+// }
+//
+// console.dir(foo);
 
-var prop;
-for (prop in foo) {
-  console.log(prop, foo.prop);
-}
+// function Hello(func){
+//   this.greeting = 'hello';
+// }
+//
+// Hello.prototype.call = function(func){
+//   console.log('func', func);
+//   console.log('gg', this);
+//   func ? func(this.greeting) : this.func(this.greeting);
+//   // console.log('func(this.greeting)', func(this.greeting));
+//   // console.log('this.func(this.greeting)', this.func(this.greeting));
+//   //
+// }
+//
+// var user = function(greeting){
+//   console.log('greeting', greeting);
+// }
+//
+// var objHello = new Hello();
+// objHello.func = user;
+// console.log(objHello);
+// objHello.call();
+//
+
+
+// var arr = [0, 1, 2];
+// arr.num = 3;
+// console.log(arr.length); // 결과 : 3
+// console.log(arr); // 결과 : 3
+//
+// arr[3] = 3;
+// console.log(arr.length); // 결과 : 4
+// console.log(arr); // 결과 : 4
+//
+// console.dir(arr);
+
+var arr = ['bar'];
+var obj = {
+  name : 'foo',
+  // length : 1
+};
+console.log(obj.length);
+
+
+Array.prototype.push.apply(obj, ['baz']);
+console.log(obj);
+console.log(obj['0']);
+console.log(obj['99']);
+console.log(obj['102']);
+

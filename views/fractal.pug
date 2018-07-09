@@ -1,0 +1,38 @@
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/fractal.css')
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js",
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
+    crossorigin="anonymous")
+  body
+    .section
+      .menu-section
+        .execute Execute!
+        .header Option
+        .separator
+        .button-box
+          .option length
+          input#length
+        .button-box
+          .option root
+          input#root
+        .button-box
+          .option depth
+          input#depth
+        .button-box
+          .option branch
+          input#branch
+        .button-box
+          .option angle
+          input#angle
+        .button-box
+          .option color
+          .option-box
+            .type-1.flex.type(index=1)
+            .type-2.flex.type(index=2)
+            .type-3.flex.type(index=3)
+            .type-4.flex.type(index=4)
+      .main-section#sketch
+
+    script(src="/javascripts/p5.js")
+    script(src="/javascripts/sketch.js")
