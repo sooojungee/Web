@@ -4,35 +4,29 @@ html
     script(src="https://code.jquery.com/jquery-3.3.1.min.js",
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
     crossorigin="anonymous")
-  body
-    .section
-      .menu-section
-        .execute Execute!
-        .header Option
-        .separator
-        .button-box
-          .option length
-          input#length
-        .button-box
-          .option root
-          input#root
-        .button-box
-          .option depth
-          input#depth
-        .button-box
-          .option branch
-          input#branch
-        .button-box
-          .option angle
-          input#angle
-        .button-box
-          .option color
-          .option-box
-            .type-1.flex.type(index=1)
-            .type-2.flex.type(index=2)
-            .type-3.flex.type(index=3)
-            .type-4.flex.type(index=4)
-      .main-section#sketch
-
     script(src="/javascripts/p5.js")
+
+  body
+    #renderer
+    .ui
+      .input-text Start Branch Count
+      input(type='range', min= 2, max= 10, step = 1, name= 'startBranchCount')
+      .input-text Child Branch Count
+      input(type='range', min= 2, max= 6, step = 1, name= 'childBranchCount')
+      .input-text Child Branch Angle
+      input(type='range', min= 0, max= 50, step= 1, name= 'childBranchAngle')
+      .input-text Depth Count
+      input(type='range', min= 2, max= 10, step = 1, name= 'depthCount')
+      .input-text Initial Branch Length
+      input(type='range', min= 0, max= 100, step = 0.01, name= 'initialBranchLength')
+      .input-text Child Branch Length Ratio
+      input(type='range', min= 0, max= 2, step = 0.01, name= 'childBranchLengthRatio')
+      .input-text Start Color
+      input(type='color', name='startColor')
+      .input-text End Color
+      input(type='color', name='endColor')
+      .button#exe exec
+
     script(src="/javascripts/sketch.js")
+    script(src="/javascripts/fractal.js")
+

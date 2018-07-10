@@ -129,17 +129,27 @@ let sliceText = [];
 //
 // console.dir(arr);
 
-var arr = ['bar'];
-var obj = {
-  name : 'foo',
-  // length : 1
-};
-console.log(obj.length);
+// var arr = ['bar'];
+// var obj = {
+//   name : 'foo',
+//   // length : 1
+// };
+// console.log(obj.length);
+//
+//
+// Array.prototype.push.apply(obj, ['baz']);
+// console.log(obj);
+// console.log(obj['0']);
+// console.log(obj['99']);
+// console.log(obj['102']);
 
-
-Array.prototype.push.apply(obj, ['baz']);
-console.log(obj);
-console.log(obj['0']);
-console.log(obj['99']);
-console.log(obj['102']);
-
+console.log(!!22); // 결과 : false
+console.log(!!1); // 결과 : true
+console.log(!!'string'); // 결과 : true
+console.log(!!''); // 결과 : false
+console.log(!!true); // 결과 : true
+console.log(!!false); // 결과 : false
+console.log(!!null); // 결과 : false
+console.log(!!undefined); // 결과 : false
+console.log(!!{}); // 결과 : true
+console.log(!![]); // 결과: true
