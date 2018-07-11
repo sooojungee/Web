@@ -7,6 +7,8 @@ function setup() {
 }
 
 const inputs = $('input');
+const $pause = $('#pause');
+let exec = false;
 
 $('#exe').on('click', () => {
   const data = {};
@@ -17,12 +19,30 @@ $('#exe').on('click', () => {
     data[k] = v;
   }
   
-  // console.log('ss', data);
-  // console.log(data.startBranchCount);
+  if($pause.hasClass('click')){
+    $pause.removeClass('click');
+  }
+  
+  exec = true;
+  fractalGenerator.setExec(exec);
   fractalGenerator.generator(data);
 });
 
+$pause.on('click', ()=>{
+  
+  if(!$pause.hasClass('click')){
+    $pause.addClass('click');
+    exec = false;
+  }
+  else {
+    $pause.removeClass('click');
+    exec = true;
+  }
+  
+  fractalGenerator.setExec(exec);
+  
+});
+
 function draw() {
-
-
+    fractalGenerator.setFrameCount(frameCount);
 }

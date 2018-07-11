@@ -143,13 +143,33 @@ let sliceText = [];
 // console.log(obj['99']);
 // console.log(obj['102']);
 
-console.log(!!22); // 결과 : false
-console.log(!!1); // 결과 : true
-console.log(!!'string'); // 결과 : true
-console.log(!!''); // 결과 : false
-console.log(!!true); // 결과 : true
-console.log(!!false); // 결과 : false
-console.log(!!null); // 결과 : false
-console.log(!!undefined); // 결과 : false
-console.log(!!{}); // 결과 : true
-console.log(!![]); // 결과: true
+// console.log(!!22); // 결과 : false
+// console.log(!!1); // 결과 : true
+// console.log(!!'string'); // 결과 : true
+// console.log(!!''); // 결과 : false
+// console.log(!!true); // 결과 : true
+// console.log(!!false); // 결과 : false
+// console.log(!!null); // 결과 : false
+// console.log(!!undefined); // 결과 : false
+// console.log(!!{}); // 결과 : true
+// console.log(!![]); // 결과: true
+
+
+
+// var add = function sum(x, y) {
+//   return x + y;
+// };
+//
+// console.log(add(3, 4));
+// console.log(sum(3, 4));
+
+
+var func = function(){
+  return 42;
+};
+
+console.log(func());
+
+(function(){
+  console.log('hi');
+})();
