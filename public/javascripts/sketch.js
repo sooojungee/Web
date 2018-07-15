@@ -1,48 +1,34 @@
-function setup() {
-  const $root = $('#renderer');
-  const canvas = createCanvas($root.width(), $root.height());
-  
-  canvas.parent('renderer');
-  background(0);
-}
+// const inputs = $('input');
+//
+// $('#exe').on('click', () => {
+//   const data = {};
+//   for (let i = 0; i < inputs.length; i++) {
+//     const $input = $(inputs[i]);
+//     const k = $input.attr('name');
+//     const v = $input.val();
+//     data[k] = v;
+//   }
+//   fractalGenerator.generate(data);
+// });
+//
+//
+// $('#play').on('click', fractalGenerator.play);
+// $('#pause').on('click', fractalGenerator.pause);
 
 const inputs = $('input');
-const $pause = $('#pause');
-let exec = false;
-
 $('#exe').on('click', () => {
   const data = {};
   for (let i = 0; i < inputs.length; i++) {
-    const $input = $(inputs[i]);
+    const $input = $(inputs[ i ]);
     const k = $input.attr('name');
     const v = $input.val();
-    data[k] = v;
+    data[ k ] = v;
   }
   
-  if($pause.hasClass('click')){
-    $pause.removeClass('click');
-  }
-  
-  exec = true;
-  fractalGenerator.setExec(exec);
-  fractalGenerator.generator(data);
-});
-
-$pause.on('click', ()=>{
-  
-  if(!$pause.hasClass('click')){
-    $pause.addClass('click');
-    exec = false;
-  }
-  else {
-    $pause.removeClass('click');
-    exec = true;
-  }
-  
-  fractalGenerator.setExec(exec);
+  fractalGenerator.generate(data);
   
 });
 
-function draw() {
-    fractalGenerator.setFrameCount(frameCount);
-}
+
+$('#play').on('click', fractalGenerator.play);
+$('#pause').on('click', fractalGenerator.pause);

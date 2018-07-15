@@ -80,4 +80,12 @@ router.get('/fractal', function(req, res, next) {
   res.render('fractal', {title: 'test'});
 });
 
+router.get('/testAlbum', function(req, res, next) {
+  res.render('testAlbum', {title: 'test'});
+});
+
+router.get('/particle', function(req, res, next) {
+  res.render('particle', {title: 'test'});
+});
+
 module.exports = router;

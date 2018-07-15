@@ -131,14 +131,23 @@ let sliceText = [];
 
 // var arr = ['bar'];
 // var obj = {
+//   0 : 'ss',
 //   name : 'foo',
-//   // length : 1
+//   length : 0
 // };
-// console.log(obj.length);
 //
 //
+// // console.log(obj.length);
+//
+// //
+// Array.prototype.push.apply(obj, ['baz']);
 // Array.prototype.push.apply(obj, ['baz']);
 // console.log(obj);
+// console.log(obj.length);
+//
+
+
+
 // console.log(obj['0']);
 // console.log(obj['99']);
 // console.log(obj['102']);
@@ -163,13 +172,213 @@ let sliceText = [];
 // console.log(add(3, 4));
 // console.log(sum(3, 4));
 
+//
+// var func = function(){
+//   return 42;
+// };
+//
+// console.log(func());
+//
+// (function(){
+//   console.log('hi');
+// })();
 
-var func = function(){
-  return 42;
+function rgb2hsv () {
+  var rr, gg, bb,
+    r = arguments[0] / 255,
+    g = arguments[1] / 255,
+    b = arguments[2] / 255,
+    h, s,
+    v = Math.max(r, g, b),
+    diff = v - Math.min(r, g, b),
+    diffc = function(c){
+      return (v - c) / 6 / diff + 1 / 2;
+    };
+  
+  if (diff == 0) {
+    h = s = 0;
+  } else {
+    s = diff / v;
+    rr = diffc(r);
+    gg = diffc(g);
+    bb = diffc(b);
+    
+    if (r === v) {
+      h = bb - gg;
+    }else if (g === v) {
+      h = (1 / 3) + rr - bb;
+    }else if (b === v) {
+      h = (2 / 3) + gg - rr;
+    }
+    if (h < 0) {
+      h += 1;
+    }else if (h > 1) {
+      h -= 1;
+    }
+  }
+  return {
+    h: Math.round(h * 360),
+    s: Math.round(s * 100),
+    v: Math.round(v * 100)
+  };
+}
+
+let a = rgb2hsv(255, 0, 0);
+// console.log(typeof a.v);
+
+/*
+
+const fractalGenerator = new function () {
+  
+  let generateData = {};
+  let count = 0;
+  let checkCount = 0;
+  let checkFrame = 0;
+  let exec = false;
+  
+  const drawLineByAngle = (x1, y1, degree, depth, count) => {
+    const length = Math.pow(generateData.childBranchLengthRatio, depth)
+      * generateData.initialBranchLength;
+    
+    if (depth > generateData.depthCount) return;
+    
+    const radian = degree / 180.0 * Math.PI;
+    const x2 = Math.cos(radian) * length + x1;
+    const y2 = Math.sin(radian) * length + y1;
+    
+    
+    const c = lerpHexColor(depth / generateData.depthCount);
+    const opacity = 255 - depth / generateData.depthCount * 255;
+
+    // if(depth < generateData.depthCount / 2)
+    //   stroke(c.r, c.g, c.b, opacity / 50);
+    // else
+    //   stroke(c.r, c.g, c.b, (255 - (depth / generateData.depthCount * 255)) / (50 * depth / 2));
+    //
+    
+    if(checkCount === depth) {
+      stroke(c.r, c.g, c.b, opacity);
+      line(x1, y1, x2, y2);
+    }
+    
+    let startAngle = -(generateData.childBranchCount - 1)
+      * generateData.childBranchAngle / 2 + degree * 1;
+    
+    for (let i = 0; i < generateData.childBranchCount; i++) {
+      drawLineByAngle(x2, y2, startAngle, depth + 1);
+      startAngle += generateData.childBranchAngle * 1;
+    }
+    
+  };
+  
+  const lerpHexColor = (ratio) => {
+    const r1 = Number('0x' + generateData.startColor[1] + generateData.startColor[2]);
+    const g1 = Number('0x' + generateData.startColor[3] + generateData.startColor[4]);
+    const b1 = Number('0x' + generateData.startColor[5] + generateData.startColor[6]);
+    const r2 = Number('0x' + generateData.endColor[1] + generateData.endColor[2]);
+    const g2 = Number('0x' + generateData.endColor[3] + generateData.endColor[4]);
+    const b2 = Number('0x' + generateData.endColor[5] + generateData.endColor[6]);
+    
+    const r = r1 * (1 - ratio) + r2 * ratio;
+    const g = g1 * (1 - ratio) + g2 * ratio;
+    const b = b1 * (1 - ratio) + b2 * ratio;
+    
+    return {r, g, b};
+    
+  };
+  
+  this.setFrameCount = (frame) => {
+    count = frame;
+    checkFrame = frame;
+    this.draws();
+  };
+  
+  this.setExec = (exe) => {
+    exec = exe;
+  };
+  
+  this.generator = (data) => {
+    generateData = data;
+    blendMode(BLEND);
+    background(0);
+    blendMode(ADD);
+    checkCount = 0;
+    // const cx = width / 2;
+    // const cy = height / 2;
+    // let checkCount = 0;
+    // const dAngle = 360.0 / generateData.startBranchCount;
+    // let currentAngle = 0;
+    //
+    // if(count % 10 === 0) {
+    //   checkCount += 1;
+    //   console.log(checkCount);
+    // }
+    //
+    // if(checkCount < 10) {
+    //   for (let i = 0; i < generateData.startBranchCount; i++) {
+    //     drawLineByAngle(cx, cy, currentAngle, 1);
+    //     currentAngle += dAngle;
+    //   }
+    // }
+    // this.draws();
+  };
+  
+  this.draws = () => {
+    const cx = width / 2;
+    const cy = height / 2;
+    const dAngle = 360.0 / generateData.startBranchCount;
+    let currentAngle = 0;
+    
+    
+    if (exec && count % 2 === 0 && checkCount < generateData.depthCount) {
+      for (let i = 0; i < generateData.startBranchCount; i++) {
+        drawLineByAngle(cx, cy, currentAngle, 1, count);
+        currentAngle += dAngle;
+      }
+      checkCount += 1;
+  
+    }
+  }
+  
 };
 
-console.log(func());
+ */
 
-(function(){
-  console.log('hi');
-})();
+// function calculate(a, b, c){
+//   return a*b+c;
+// }
+//
+// function curry(func){
+//   var args = Array.prototype.slice.call(arguments, 1);
+//   console.log(arguments.length);
+//   console.log(arguments);
+//   return function (){
+//     // console.log('sss', this);
+//
+//     return func.apply(this, args.concat(Array.prototype.slice.call(arguments)));
+//   }
+// }
+//
+// var func1 = curry(calculate, 1, 2);
+// console.log('s', func1(3));
+
+// function add(x, y){
+//   return x + y;
+// }
+//
+// console.log(typeof add);
+// add.result = add(3, 2);
+// add.status = 'OK';
+// console.log(add.result);
+// console.log(add.status);
+// console.log(add);
+
+var foo = function(func){
+  func();
+};
+
+var t = function() {
+  console.log('Function can be used as the argument');
+};
+
+foo(t);
