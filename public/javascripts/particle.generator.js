@@ -8,14 +8,13 @@ const particleGenerate = new function() {
     this.size = 10;
     this.color = '#ff0000';
     this.life = 60;
-    this.vx = Math.random() * 2 + 1;
+    this.vx = Math.random() * 10 - 5;
     this.vy = +Math.random() * 5 + 3;
     this.update = () => {
       this.x += this.vx;
       this.y += this.vy;
       // this.vx += Math.random() * 1 - 0.5;
       // this.vy += Math.random() * 1 - 0.5;
-      
       
     };
     return this;
@@ -94,3 +93,5 @@ function setup() {
 function draw() {
   particleGenerate.update(mic.getLevel());
 }
+
+// #background

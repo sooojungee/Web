@@ -373,12 +373,40 @@ const fractalGenerator = new function () {
 // console.log(add.status);
 // console.log(add);
 
-var foo = function(func){
-  func();
-};
+// var foo = function(func){
+//   func();
+// };
+//
+// var t = function() {
+//   console.log('Function can be used as the argument');
+// };
+//
+// foo(t);
+//
 
-var t = function() {
-  console.log('Function can be used as the argument');
-};
 
-foo(t);
+// var b = Math.random();
+// for(var i = 0; i < 6; i ++){
+//   console.log(Math.random() * 5 + 3);
+// }
+let c = [];
+let b = [];
+for(let i = 0; i < 5; i++){
+  b.push(i * 2);
+}
+
+c.push(b);
+b = [];
+
+console.log(c);
+console.log(b);
+
+for(let i = 0; i < 5; i++){
+  b.push(i * 3);
+}
+
+c.push(b);
+b = [];
+
+console.log(c);
+console.log(b);
