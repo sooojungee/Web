@@ -389,24 +389,113 @@ const fractalGenerator = new function () {
 // for(var i = 0; i < 6; i ++){
 //   console.log(Math.random() * 5 + 3);
 // }
-let c = [];
-let b = [];
-for(let i = 0; i < 5; i++){
-  b.push(i * 2);
-}
 
-c.push(b);
-b = [];
 
-console.log(c);
-console.log(b);
+//
+// let c = [];
+// let b = [];
+// for(let i = 0; i < 5; i++){
+//   b.push(i * 2);
+// }
+//
+// c.push(b);
+// b = [];
+//
+// console.log(c);
+// console.log(b);
+//
+// for(let i = 0; i < 5; i++){
+//   b.push(i * 3);
+// }
+//
+// c.push(b);
+// b = [];
+//
+// console.log(c);
+// console.log(b);
 
-for(let i = 0; i < 5; i++){
-  b.push(i * 3);
-}
 
-c.push(b);
-b = [];
+let blogCard = [
+  {
+    text: 'fractal',
+    date: 'JULY 2018',
+    imgUrl: 'https://preview.ibb.co/bzYEYd/2018_07_22_8_17_13.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/instagram.html',
+    tag: ['fractal', 'canvas']
+  },
+  {
+    text: 'textFinder',
+    date: 'JULY 2018',
+    imgUrl: 'https://preview.ibb.co/c0zJ9J/2018_07_22_7_06_49.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/textfinder.html',
+    tag: ['button', 'input']
+  },
+  {
+    text: 'JsonFilter',
+    date: 'JUNE 2018',
+    imgUrl: 'https://preview.ibb.co/crYpGy/2018_07_22_5_56_08.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/jsonfilter.html',
+    tag: ['json', 'filter', 'select']
+  },
+  {
+    text: 'calculator',
+    date: 'JUNE 2018',
+    imgUrl: 'https://preview.ibb.co/g5Gy9J/2018_07_22_7_03_06.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/calculator.html',
+    tag: ['calculator', 'eval', 'math']
+  },
+  {
+    text: 'kakaotalk',
+    date: 'JUNE 2018',
+    imgUrl: 'https://preview.ibb.co/eMr9Gy/2018_07_22_5_55_12.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/kakaologin.html',
+    tag: ['alter', 'atag....']
+  },
+  {
+    text: 'firebase',
+    date: 'JUNE 2018',
+    imgUrl: 'https://preview.ibb.co/iVmtby/2018_07_22_5_54_35.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/firebase.html',
+    tag: ['animation', 'hover', 'grid']
+  },
+  
+  {
+    text: 'instagram',
+    date: 'JUNE 2018',
+    imgUrl: 'https://preview.ibb.co/jeFpid/2018_07_22_5_53_59.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/instagram.html',
+    tag: ['flex-wrap', 'icon', 'grid']
+  },
 
-console.log(c);
-console.log(b);
+];
+const cardJson = JSON.parse(JSON.stringify(blogCard));
+let val = 'grid';
+
+let check = [];
+// for(let i = 0; i < cardJson.length; i++){
+//   let ele= cardJson[i].tag;
+//   for(let j = 0; j < ele.length; j++){
+//     if(ele[j].toString().toLowerCase() == val.toLowerCase()){
+//       check.push(cardJson[i].text);
+//     }
+//   }
+//   // console.log(i);
+//
+// }
+
+
+// for(let i = 0; i < cardJson.length; i++){
+//   let ele= cardJson[i].tag;
+//   if($.inArray(3, arrTmp) != -1){
+//
+//     alert("찾았음");
+//
+//   }else{
+//
+//     alert("없음");
+//
+//   }
+//
+// }
+
+// console.log(check);

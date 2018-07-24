@@ -130,8 +130,6 @@
 // }
 
 
-// 업데이트 한번에 해서 저장하지 말고 그리면서 업데이트해야함
-
 const shootingStar = new function () {
   const stars = [];
   let twinkleStars = [];
@@ -217,7 +215,7 @@ const shootingStar = new function () {
     
     // background(255, 255, 255, 25);
     
-    if (usage > 0.05 && tick % 10 === 0) {
+    if (usage > 0.05 && tick % 8 === 0) {
       star = new Star(usage);
       stars.push(star);
     }
@@ -261,52 +259,7 @@ const shootingStar = new function () {
       
     });
   };
-  // this.update1 = (volume) => {
-  //
-  //   const count = volume * 50;
-  //   if (_.isEmpty(stars)) return;
-  //
-  //   // console.log('ss');
-  //
-  //   tick++;
-  //   if (tick % 30 === 0) {
-  //     const p = stars[createIndex];
-  //     p.x = Math.random() * width;
-  //     p.y = 0;
-  //     p.life = 500;
-  //     p.size = count + 2;
-  //     createIndex++;
-  //     createIndex %= 300;
-  //   }
-  //
-  //   for (var i = 0; i < count; i++) {
-  //     const p = stars[createIndex];
-  //     p.x = Math.random() * width;
-  //     p.y = 0;
-  //     p.life = 500;
-  //     p.size = count + 2;
-  //     createIndex++;
-  //     createIndex %= 300;
-  //   }
-  //
-  //
-  //   // blendMode(BLEND);
-  //   // blendMode(MULTIPLY);
-  //   background(255, 255, 255, 25);
-  //
-  //
-  //   _.forEach(stars, particle => {
-  //     if (particle.life <= 0) return;
-  //     particle.update();
-  //     particle.life--;
-  //     fill(255, 242, 0);
-  //     console.log('s', particle.x, particle.y, particle.size);
-  //     ellipse(particle.x,
-  //       particle.y,
-  //       particle.size,
-  //       particle.size);
-  //   });
-  // };
+  
   
 };
 
@@ -314,8 +267,7 @@ const shootingStar = new function () {
 function setup() {
   const $root = $('body');
   const $main = $('.py-5');
-  // console.log($root.width(), $root.height());
-  // console.log('main', $main.width(), $main.height());
+
   const thisWidth = $root.width();
   const thisHeight = $root.height() - $main.height();
   const canvas = createCanvas(thisWidth, thisHeight);
@@ -335,13 +287,7 @@ let mic;
 function draw() {
   
   background(0);
-  // if (mic.getLevel() > 0.05) {
-  //   // console.log('gg');
-  //   shootingStar.update(mic.getLevel());
-  // }
-  // shootingStar.update(0);
-  
-  // console.log('gg');
+
   shootingStar.update(mic.getLevel());
   
 }

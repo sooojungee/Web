@@ -97,9 +97,7 @@ body {
 
 .img-zone {
   height: 580px;
-  background: url("http://www.ajou.ac.kr/_attach/new/_images/2018/05/09/180509_main_visual_05_bg.gif") no-repeat;
-  background-size: auto;
-  background-position-x: 50%; }
+  background: url("http://www.ajou.ac.kr/_attach/new/_images/2018/06/15/180615_main_visual_002_bg.gif") 50% 0px no-repeat transparent; }
   .img-zone .content {
     position: relative; }
     .img-zone .content .content-mini {

@@ -9,16 +9,20 @@ html(lang='en')
 
 
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin="anonymous")
 
 
     link(rel='stylesheet', href='/stylesheets/albumBootstrap.css')
     link(rel="stylesheet", href="/stylesheets/album.css")
     link(rel ="stylesheet", href="/stylesheets/addAlbum.css")
+    link(rel='stylesheet', href='/stylesheets/progress.css')
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js')
     script(src="https://code.jquery.com/jquery-3.3.1.min.js",
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
     crossorigin="anonymous")
+
+    script(src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js')
 
     script(src="/javascripts/p5.js")
     script(src='/javascripts/addons/p5.dom.min.js')
@@ -53,9 +57,11 @@ html(lang='en')
                 //circle(cx='12', cy='13', r='4')
               .i.material-icons home
               strong Blog
-            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarHeader', aria-controls='navbarHeader', aria-expanded='false', aria-label='Toggle navigation')
-              span.navbar-toggler-icon
-      main(role='main')
+            .search-bar
+              i.fa.fa-search#search
+              input#input(placeholder="Search")
+
+      main(role='main')#main
         section.jumbotron.text-center.container-make
           .container.container-make
             h1.jumbotron-heading sooojungee.io
@@ -67,87 +73,93 @@ html(lang='en')
             p
               a.btn.btn-primary.my-2.text-padding.text-margin.text-size(href='#') Send mail
               a.btn.btn-secondary.my-2.text-padding.text-size(href='https://github.com/sooojungee') Visit github
-        .album.py-5.bg-light
+        .album.py-5.bg-light.main-content
           .container.background-color
-            .row
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/bzYEYd/2018_07_22_8_17_13.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JULY 2018
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/c0zJ9J/2018_07_22_7_06_49.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JULY 2018
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/crYpGy/2018_07_22_5_56_08.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JUNE 2018
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/g5Gy9J/2018_07_22_7_03_06.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JUNE 2018
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/eMr9Gy/2018_07_22_5_55_12.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JUNE 2018
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/iVmtby/2018_07_22_5_54_35.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JUNE 2018
+            .row#row
+              //.container-box
+              //  .container-content
+              //    .progress
+              //      .progress-bar
+              //        .progress-shadow
 
-              .col-md-4
-                .card.mb-4.box-shadow
-                  img.card-img-top.padding-8(src='https://preview.ibb.co/jeFpid/2018_07_22_5_53_59.png', alt='Card image cap')
-                  .card-body
-                    p.card-text
-                      | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .d-flex.justify-content-between.align-items-center
-                      .btn-group
-                        button.btn.btn-sm.btn-outline-secondary.width(type='button') View
-                        //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                      small.text-muted JUNE 2018
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    .card-img-top.padding-8.back-img(alt='Card image cap')
+              //    .card-body
+              //      p.card-text
+              //        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              //      .d-flex.justify-content-between.align-items-center
+              //        .btn-group
+              //          button.btn.btn-sm.btn-outline-secondary.width(type='button') View
+              //          //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
+              //        small.text-muted JULY 2018
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    img.card-img-top.padding-8(src='https://preview.ibb.co/c0zJ9J/2018_07_22_7_06_49.png', alt='Card image cap')
+              //    .card-body
+              //      .tag-content
+              //      p.card-text
+              //        | This is a wider card with supporting text
+              //      .d-flex.justify-content-between.align-items-center
+              //        a.btn-group(href='https://sooojungee.github.io/public/views/textfinder.html')
+              //          button.btn.btn-sm.btn-outline-secondary.width(type='button') View
+              //        small.text-muted JULY 2018
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    img.card-img-top.padding-8(src='https://preview.ibb.co/crYpGy/2018_07_22_5_56_08.png', alt='Card image cap')
+              //    .card-body
+              //      p.card-text
+              //        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              //      .d-flex.justify-content-between.align-items-center
+              //        a.btn-group(href='https://sooojungee.github.io/public/views/jsonfilter.html')
+              //          button.btn.btn-sm.btn-outline-secondary.width(type='button') View
+              //          //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
+              //        small.text-muted JUNE 2018
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    img.card-img-top.padding-8(src='https://preview.ibb.co/g5Gy9J/2018_07_22_7_03_06.png', alt='Card image cap')
+              //    .card-body
+              //      p.card-text
+              //        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              //      .d-flex.justify-content-between.align-items-center
+              //        a.btn-group(href='https://sooojungee.github.io/public/views/calculator.html')
+              //          button.btn.btn-sm.btn-outline-secondary.width(type='button') View
+              //          //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
+              //        small.text-muted JUNE 2018
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    img.card-img-top.padding-8(src='https://preview.ibb.co/eMr9Gy/2018_07_22_5_55_12.png', alt='Card image cap')
+              //    .card-body
+              //      p.card-text
+              //        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              //      .d-flex.justify-content-between.align-items-center
+              //        a.btn-group
+              //          button.btn.btn-sm.btn-outline-secondary.width(type='button') View
+              //          //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
+              //        small.text-muted JUNE 2018
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    img.card-img-top.padding-8(src='https://preview.ibb.co/iVmtby/2018_07_22_5_54_35.png', alt='Card image cap')
+              //    .card-body
+              //      p.card-text
+              //        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              //      .d-flex.justify-content-between.align-items-center
+              //        a.btn-group(href='https://sooojungee.github.io/public/views/firebase.html')
+              //          button.btn.btn-sm.btn-outline-secondary.width(href ='https://sooojungee.github.io/public/views/instagram.html', type='button') View
+              //          //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
+              //        small.text-muted JUNE 2018
+              //
+              //.col-md-4
+              //  .card.mb-4.box-shadow
+              //    img.card-img-top.padding-8(src='https://preview.ibb.co/jeFpid/2018_07_22_5_53_59.png', alt='Card image cap')
+              //    .card-body
+              //      p.card-text
+              //        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              //      .d-flex.justify-content-between.align-items-center
+              //        a.btn-group(href ='https://sooojungee.github.io/public/views/instagram.html')
+              //          button.btn.btn-sm.btn-outline-secondary.width(type='button') View
+              //          //button.btn.btn-sm.btn-outline-secondary(type='button') Edit
+              //        small.text-muted JUNE 2018
 
       footer.text-muted
         .container
@@ -162,4 +174,5 @@ html(lang='en')
             | .
 
     script(src="/javascripts/album-test.js")
+    script(src="/javascripts/blog.js")
 

@@ -88,4 +88,12 @@ router.get('/particle', function(req, res, next) {
   res.render('particle', {title: 'test'});
 });
 
+router.get('/new', function(req, res, next) {
+  res.render('newFractal', {title: 'test'});
+});
+
+router.get('/progress', function(req, res, next) {
+  res.render('progresstest', {title: 'test'});
+});
+
 module.exports = router;
