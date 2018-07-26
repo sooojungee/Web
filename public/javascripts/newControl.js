@@ -49,7 +49,7 @@ const $saveImage = $('#save');
 $saveImage.on('click', (e)=>{
   console.log('ss');
   Canvas2Image.saveAsJPEG(canvas ,$root.width(), $root.height());
-  
+  console.log(canvas);
 });
 
 function draw() {

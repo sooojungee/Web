@@ -2,42 +2,42 @@ let blogCard = [
   {
     text: 'fractal',
     date: 'JULY 2018',
-    imgUrl: 'https://preview.ibb.co/nkPato/2018_07_24_3_21_38.png',
+    img: '../images/fractal.png',
     siteUrl: 'https://sooojungee.github.io/public/views/instagram.html',
     tag: ['fractal', 'canvas', 'rotate', 'color', 'skdufhskdufh', 'a']
   },
   {
     text: 'textFinder',
     date: 'JULY 2018',
-    imgUrl: 'https://preview.ibb.co/c0zJ9J/2018_07_22_7_06_49.png',
+    img: '/images/textFinder.png',
     siteUrl: 'https://sooojungee.github.io/public/views/textfinder.html',
     tag: ['button', 'input', 'skdufhskdufh']
   },
   {
     text: 'JsonFilter',
     date: 'JUNE 2018',
-    imgUrl: 'https://preview.ibb.co/crYpGy/2018_07_22_5_56_08.png',
+    img: '/images/jsonFilter.png',
     siteUrl: 'https://sooojungee.github.io/public/views/jsonfilter.html',
     tag: ['json', 'filter', 'select', 'skdufhskdufh']
   },
   {
     text: 'calculator',
     date: 'JUNE 2018',
-    imgUrl: 'https://preview.ibb.co/g5Gy9J/2018_07_22_7_03_06.png',
+    img: '/images/calculator.png',
     siteUrl: 'https://sooojungee.github.io/public/views/calculator.html',
     tag: ['calculator', 'eval', 'math', 'skdufhskdufh']
   },
   {
     text: 'kakaotalk',
     date: 'JUNE 2018',
-    imgUrl: 'https://preview.ibb.co/eMr9Gy/2018_07_22_5_55_12.png',
+    img: '/images/kakaotalk.png',
     siteUrl: 'https://sooojungee.github.io/public/views/kakaologin.html',
     tag: ['input', 'password', 'atag...........', 'skdufhskdufh', 'a']
   },
   {
     text: 'firebase',
     date: 'JUNE 2018',
-    imgUrl: 'https://preview.ibb.co/iVmtby/2018_07_22_5_54_35.png',
+    img: '/images/firebase.png',
     siteUrl: 'https://sooojungee.github.io/public/views/firebase.html',
     tag: ['animation', 'hover', 'grid', 'a']
   },
@@ -45,12 +45,14 @@ let blogCard = [
   {
     text: 'instagram',
     date: 'JUNE 2018',
-    imgUrl: 'https://preview.ibb.co/jeFpid/2018_07_22_5_53_59.png',
+    img: '/images/instagram.png',
     siteUrl: 'https://sooojungee.github.io/public/views/instagram.html',
-    tag: ['flex-wrap', 'icon', 'grid', 'a']
+    tag: ['flex-wrap', 'icon', 'grid']
   },
 
 ];
+let data = JSON.parse(JSON.stringify(blogCard));
+let cardJson = JSON.parse(JSON.stringify(blogCard));
 
 //
 let $row = $('#row').masonry({
@@ -61,37 +63,51 @@ let $row = $('#row').masonry({
   percentPosition: true
 });
 
-const cardJson = JSON.parse(JSON.stringify(blogCard));
-const blogEvent = new function () {
-  
-  this.addCard = (arr) => {
-    let template = `<div class="col-md-4 view">
+
+let template = `<div class="col-md-4 view">
     <div class="card mb-4 box-shadow"><img class="card-img-top padding-8" alt="Card image cap" />
         <div class="card-body">
-            <div class="tag-content" id=${arr.text}>
+            <div class="tag-content">
             </div>
-            <p class="card-text">${arr.text}</p>
-            <div class="d-flex justify-content-between align-items-center"><a class="btn-group" href=${arr.siteUrl}><button class="btn btn-sm btn-outline-secondary width" type="button">View</button></a><small class="text-muted">${arr.date}</small></div>
+            <p class="card-text"></p>
+            <div class="d-flex justify-content-between align-items-center"><a class="btn-group"><button class="btn btn-sm btn-outline-secondary width" type="button">View</button></a><small class="text-muted"></small></div>
+        </div>
+    </div>
+</div>`;
+
+const blogEvent = new function () {
+  
+  this.addCard = (data) => {
+  
+  
+    let template = `<div class="col-md-4 view">
+    <div class="card mb-4 box-shadow"><img class="card-img-top padding-8" src = ${data.img} alt="Card image cap" />
+        <div class="card-body">
+            <div class="tag-content" id = ${data.text} >
+            </div>
+            <p class="card-text">${data.text}</p>
+            <div class="d-flex justify-content-between align-items-center"><a class="btn-group"><button class="btn btn-sm btn-outline-secondary width" type="button">View</button></a><small class="text-muted">${data.date}</small></div>
         </div>
     </div>
 </div>`;
     
     
-    const id = arr.text;
-    const tags = arr.tag;
     
-    
-    $('#row').append(template);
-    
-    const $id = $('#' + id);
+    // const $ele = $(template);
+    // $ele.find('img').attr('src', data.img);
+    // $ele.find('.card-text').text(data.text);
+    // $ele.find('.text-muted').text(data.date);
+    // $ele.find('.tag-content').attr('id', data.text);
+    //
+    $row.append(template).masonry('appended', template);
+    $row.masonry('layout');
+    // $row.append($ele).masonry('appended', $ele);
   
-    
-    for (let i = 0; i < tags.length; i++) {
-      console.log($id);
-      $id.append(`<div class="tag"> #${tags[i]}</div>`);
-    }
   
-    $id.parent('col-md-4').find('img').attr('src', arr.imgUrl);
+    $row.imagesLoaded().progress(function () {
+      $row.masonry('layout');
+    });
+    
     
     // return this;
   };
@@ -171,20 +187,7 @@ const blogEvent = new function () {
           }
         }
         else {
-
-//         let template = `<div class="col-md-4">
-//     <div class="card mb-4 box-shadow"><div class="card-img-top padding-8 back-img" alt="Card image cap"></div>
-//         <div class="card-body">
-//             <div class="tag-content" id=${arr.text}>
-//             </div>
-//             <p class="card-text">${arr.text}</p>
-//             <div class="d-flex justify-content-between align-items-center"><a class="btn-group" href=${arr.siteUrl}><button class="btn btn-sm btn-outline-secondary width" type="button">View</button></a><small class="text-muted">${arr.date}</small></div>
-//         </div>
-//     </div>
-// </div>`;
-//         const id = arr.text;
-//         const tags = arr.tag;
-//
+          
           
           if (!($('#' + cardJson[i].text).hasClass($('.view')))) {
             $('#' + cardJson[i].text).addClass('.view');
@@ -235,48 +238,21 @@ const blogEvent = new function () {
 };
 
 
-new function () {
+for (let i = 0; i < data.length; i++) {
+  blogEvent.addCard(data[i]);
+}
+
+const $input = $('#input');
+
+$input.on('keyup', () => {
+  const val = $input.val();
+  blogEvent.update(val);
   
-  for (let i = 0; i < cardJson.length; i++) {
-    blogEvent.addCard(cardJson[i]);
-  }
-  
-  const $input = $('#input');
-  const $search = $('#search');
-  const $tag = $('.tag');
-  $search.on('click', () => {
-    const val = $input.val();
-    if (val.length > 0)
-      blogEvent.update(val);
+  $row.imagesLoaded().progress(function () {
+    $row.masonry('layout');
   });
   
-  $input.on('keyup', () => {
-    const val = $input.val();
-    blogEvent.update(val);
-    
-    
-    $row.imagesLoaded().progress(function () {
-      $row.masonry('layout');
-    });
-    
-    
-  });
   
-  $tag.on('click', (event) => {
-    const $this = $(event.target);
-    const text = $this.html().toString();
-    const val = text.slice(2, text.length);
-    blogEvent.update(val);
-  });
-  
-  //
-  // $('#row').masonry({
-  //   // set itemSelector so .grid-sizer is not used in layout
-  //   itemSelector: '.view',
-  //   // use element for option
-  //   columnWidth: '.col-md-4',
-  //   percentPosition: true
-  // });
-  
-};
+});
+
 

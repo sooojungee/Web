@@ -12,5 +12,6 @@
     <orderEntry type="library" name="firebase" level="application" />
     <orderEntry type="library" name="lodash" level="application" />
     <orderEntry type="library" name="masonry.pkgd" level="application" />
+    <orderEntry type="library" name="imagesloaded.pkgd" level="application" />
   </component>
 </module>
