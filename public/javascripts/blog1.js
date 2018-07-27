@@ -117,8 +117,8 @@ let blogCard = [
   {
     text: 'fractal',
     date: 'JULY 2018',
-    img: '../images/fractal.png',
-    siteUrl: 'https://sooojungee.github.io/public/views/instagram.html',
+    img: '/images/fractal.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/newFractal.html',
     tag: ['fractal', 'canvas', 'rotate', 'color', 'skdufhskdufh', 'a']
   },
   {
@@ -164,11 +164,18 @@ let blogCard = [
     siteUrl: 'https://sooojungee.github.io/public/views/instagram.html',
     tag: ['flex-wrap', 'icon', 'grid']
   },
+  {
+    text: 'ajouUniv',
+    date: 'JUNE 2018',
+    img: '/images/ajou.png',
+    siteUrl: 'https://sooojungee.github.io/public/views/ajou.html',
+    tag: ['ajouUniv', 'grid']
+  }
 
 ];
 let data = JSON.parse(JSON.stringify(blogCard));
 
-let template = `<div class="col-md-4 view">
+let template = `<div class="col-md-4">
     <div class="card mb-4 box-shadow"><img class="card-img-top padding-8" alt="Card image cap" />
         <div class="card-body">
             <div class="tag-content">
@@ -184,6 +191,7 @@ let $row = $('#row').masonry({
   itemSelector: '.col-md-4',
   // use element for option
   columnWidth: '.col-md-4',
+  // initLayout: false,
   percentPosition: true
 });
 
@@ -209,7 +217,7 @@ function Element(data) {
     for (let i = 0; i < data.tag.length; i++) {
       const tagValue = data.tag[i].toLowerCase();
       if (tagValue.indexOf(val) !== -1) {
-
+        
         if ($ele.hasClass('display-none'))
           $ele.removeClass('display-none');
         
@@ -219,21 +227,11 @@ function Element(data) {
         
         if (!$ele.hasClass('display-none'))
           $ele.addClass('display-none');
-
         
       }
     }
-    //
-    // $row.imagesLoaded().progress(function () {
-    //   $row.masonry('layout');
-    // });
-    
     
   };
-  
-  
-  
-  
   
   $row.imagesLoaded().progress(function () {
     $row.masonry('layout');
@@ -251,13 +249,7 @@ $input.on('keyup', () => {
   
   let val = $input.val().toLowerCase();
   
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].hasTag(val);
-    // $row.imagesLoaded().progress(function () {
-    //   $row.masonry('layout');
-    // });
-    
-  }
+  _.filter(elements, (e) => e.hasTag(val));
   
   $row.imagesLoaded(function () {
     $row.masonry('layout');
@@ -282,11 +274,13 @@ $input.on('keyup', () => {
   //   });
   // },1000)
   
-  // console.log('?');
-  
-  // $row.imagesLoaded().progress(function () {
-  //   $row.masonry('layout');
-  // });
-  
   
 });
+
+
+var users = [
+  { 'user': 'barney' },
+  { 'user': 'fred' }
+];
+var arr = _.map(users, 'user');
+console.log(arr); //
