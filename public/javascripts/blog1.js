@@ -278,9 +278,4 @@ $input.on('keyup', () => {
 });
 
 
-var users = [
-  { 'user': 'barney' },
-  { 'user': 'fred' }
-];
-var arr = _.map(users, 'user');
-console.log(arr); //
+

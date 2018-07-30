@@ -96,4 +96,13 @@ router.get('/progress', function(req, res, next) {
   res.render('progresstest', {title: 'test'});
 });
 
+router.get('/data', function(req, res, next) {
+  res.render('csv', {title: 'test'});
+});
+
+router.get('/galleryTest', function(req, res, next) {
+  res.render('galleryTest', {title: 'test'});
+});
+
+
 module.exports = router;

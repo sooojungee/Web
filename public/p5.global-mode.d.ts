@@ -3865,7 +3865,7 @@ declare function loadStrings(filename: string, callback?: Function, errorCallbac
  *   Table only looks for a header row if the 'header' 
  *   option is included. Possible options include: 
  * 
- *   - csv - parse the table as comma-separated values
+ *   - data - parse the table as comma-separated values
  *   - tsv - parse the table as tab-separated values
  *   - header - this table has a header (title) row  
  * 
@@ -3874,7 +3874,7 @@ declare function loadStrings(filename: string, callback?: Function, errorCallbac
  *   example: 
  * 
  *   
- *   loadTable('my_csv_file.csv', 'csv', 'header');   
+ *   loadTable('my_csv_file.data', 'data', 'header');
  * 
  *  
  *   All files loaded and saved use UTF-8 encoding. 
@@ -3889,7 +3889,7 @@ declare function loadStrings(filename: string, callback?: Function, errorCallbac
  *   function to handle the object:
  *
  *   @param filename name of the file or URL to load
- *   @param options "header" "csv" "tsv"
+ *   @param options "header" "data" "tsv"
  *   @param [callback] function to be executed after 
  *   loadTable() completes. On success, the Table 
  *   object is passed in as the first argument.
@@ -3910,7 +3910,7 @@ declare function loadTable(filename: string, options: string, callback?: Functio
  *   Table only looks for a header row if the 'header' 
  *   option is included. Possible options include: 
  * 
- *   - csv - parse the table as comma-separated values
+ *   - data - parse the table as comma-separated values
  *   - tsv - parse the table as tab-separated values
  *   - header - this table has a header (title) row  
  * 
@@ -3919,7 +3919,7 @@ declare function loadTable(filename: string, options: string, callback?: Functio
  *   example: 
  * 
  *   
- *   loadTable('my_csv_file.csv', 'csv', 'header');   
+ *   loadTable('my_csv_file.data', 'data', 'header');
  * 
  *  
  *   All files loaded and saved use UTF-8 encoding. 
@@ -4139,7 +4139,7 @@ declare function httpDo(path: string, options: object, callback?: Function, erro
 declare function createWriter(name: string, extension?: string): p5.PrintWriter;
 
 /**
- *   Save an image, text, json, csv, wav, or html. 
+ *   Save an image, text, json, data, wav, or html.
  *   Prompts download to the client's computer. Note 
  *   that it is not recommended to call save() within 
  *   draw if it's looping, as the save() function will 
@@ -4172,7 +4172,7 @@ declare function createWriter(name: string, extension?: string): p5.PrintWriter;
  *   'myGraphics.jpg'); var myTable = new p5.Table(); 
  *   // Saves table as html file save(myTable, 
  *   'myTable.html'); // Comma Separated Values 
- *   save(myTable, 'myTable.csv'); // Tab Separated 
+ *   save(myTable, 'myTable.data'); // Tab Separated
  *   Values save(myTable, 'myTable.tsv'); var myJSON = 
  *   { a: 1, b: true }; // Saves pretty JSON 
  *   save(myJSON, 'my.json'); // Optimizes JSON 
@@ -4224,7 +4224,7 @@ declare function saveStrings(list: string[], filename: string, extension?: strin
 /**
  *   Writes the contents of a Table object to a file. 
  *   Defaults to a text file with 
- *   comma-separated-values ('csv') but can also use 
+ *   comma-separated-values ('data') but can also use
  *   tab separation ('tsv'), or generate an HTML table 
  *   ('html'). The file saving process and location of 
  *   the saved file will vary between web browsers.
@@ -4232,7 +4232,7 @@ declare function saveStrings(list: string[], filename: string, extension?: strin
  *   @param Table the Table object to save to a file
  *   @param filename the filename to which the Table 
  *   should be saved
- *   @param [options] can be one of "tsv", "csv", or 
+ *   @param [options] can be one of "tsv", "data", or
  *   "html"
  */
 declare function saveTable(Table: p5.Table, filename: string, options?: string): void;
