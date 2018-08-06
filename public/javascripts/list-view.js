@@ -4,9 +4,9 @@ $.getJSON('/data/gallery.json', function (json) {
   
   elements = _.map(json, (d) => new Element(d));
   
-  // for (let i = 0; i < 60; i++) {
-  //   elements.push(new Element(json[i]));
-  // }
+  for (let i = 0; i < 60; i++) {
+    elements.push(new Element(json[i]));
+  }
   
 });
 
@@ -17,7 +17,7 @@ const template = `<div class="list-view">
     <div class="tags"></div>
 </div>`;
 
-
+const $view = $('.list-mode');
 function Element(data) {
   
   const $ele = $(template);

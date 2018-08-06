@@ -277,5 +277,13 @@ $input.on('keyup', () => {
   
 });
 
+function MyFunction (){
+  return true;
+}
+
+console.dir(MyFunction());
+console.dir(MyFunction.prototype);
+console.dir(MyFunction.prototype.constructor);
+
 
 

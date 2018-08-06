@@ -47,4 +47,13 @@
 .border-0 {
   border: none; }
 
+.background {
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.border {
+  box-sizing: border-box;
+  border: 5px solid white;
+  border-radius: 10px; }
+
 /*# sourceMappingURL=addGallery.css.map */
