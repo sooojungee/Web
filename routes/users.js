@@ -104,5 +104,10 @@ router.get('/galleryTest', function(req, res, next) {
   res.render('galleryTest', {title: 'test'});
 });
 
+router.get('/afilter', function(req, res, next) {
+  res.render('filter', {title: 'test'});
+});
+
+
 
 module.exports = router;

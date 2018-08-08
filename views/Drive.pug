@@ -4,12 +4,15 @@ html
     script(src="https://code.jquery.com/jquery-3.3.1.min.js",
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
     crossorigin="anonymous")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js')
     script(src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js")
 
   body
-    h3#loginButton(style = 'background:#ccc; color: white') SIGN IN
-    h3#logoutButton(style = 'background:#ccc; ') SIGN OUT
+    h3#loginButton(style = 'background:#ccc; color: white; display: block') SIGN IN
+    h3#logoutButton(style = 'background:#ccc; color: white; display: none') SIGN OUT
 
 
   //script(src="/javascripts/drive.js")
-  script(src="/javascripts/firebase.example.js")
+  script(src="/javascripts/firebase.api.example.js")
+  script(src="/javascripts/controller.example.js")
+
