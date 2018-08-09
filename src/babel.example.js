@@ -1,3 +1,5 @@
+
+
 function Element() {
 
 }
@@ -14,4 +16,10 @@ function wait() {
 
 async function t(){
   await(1000);
+  console.log('this');
+  
 }
+
+t();
+
+

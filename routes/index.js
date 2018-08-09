@@ -10,6 +10,10 @@ router.get('/firebase', function(req, res, next) {
   res.render('Drive', {title: 'test'});
 });
 
+router.get('/babel', function(req, res, next) {
+  res.render('babelTest', {title: 'test'});
+});
+
 
 
 module.exports = router;

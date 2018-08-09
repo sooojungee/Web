@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var t = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -10,7 +10,10 @@ var t = function () {
             return 1000;
 
           case 2:
-          case "end":
+            console.log('this');
+
+          case 3:
+          case 'end':
             return _context.stop();
         }
       }
@@ -37,3 +40,5 @@ function wait() {
     }, ms);
   });
 }
+
+t();

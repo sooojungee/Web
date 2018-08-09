@@ -7,11 +7,11 @@
     "build": "babel ./src --out-dir ./dist --watch"
   },
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
     "canvas-image-saver": "^0.2.0",
     "canvas-to-image": "^2.0.0",
     "canvas2image": "^1.0.5",
     "cookie-parser": "~1.4.3",
+    "core-js": "^2.5.7",
     "csv-read": "^1.0.2",
     "debug": "~2.6.9",
     "express": "~4.16.0",
@@ -23,5 +23,11 @@
     "node-sass-middleware": "0.11.0",
     "pug": "2.0.0-beta11",
     "sharp": "^0.20.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
