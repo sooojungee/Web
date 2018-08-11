@@ -27,6 +27,7 @@ $button.on('click', async () => {
   $root.empty();
   const clicked = $('.search-zone').find('.click');
   const template = `<div class = result></div>`;
+  
   const files = await Promise.all(_.map(clicked, (data) => readFile(data.id)));
   
   _.forEach(files, (data) => {

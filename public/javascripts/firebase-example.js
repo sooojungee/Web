@@ -16,7 +16,7 @@ firebase.initializeApp(config);
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 const db = firebase.firestore();
-
+const storage = firebase.storage();
 
 const settings = {/* your settings... */ timestampsInSnapshots: true};
 db.settings(settings);
