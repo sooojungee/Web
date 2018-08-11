@@ -39,7 +39,40 @@ const UIController = new function () {
   
   $readFile.on('click', function () {
     FirebaseApi.readFileData();
-  })
+  });
   
+  
+  const $drop = $('.drag-zone');
+  
+  $drop.on('dragenter', function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    
+    $drop.css('border', "2px solid red");
+  });
+  
+  $drop.on('dragleave', function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    
+    $drop.css('border', "2px solid blue");
+  });
+  
+  $drop.on('dragover', function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    
+    $drop.css('border', "2px solid green");
+  });
+  
+  $drop.on('drop', function(e){
+    e.preventDefault();
+    const files = e.originalEvent.dataTransfer.files;
+    console.log(files);
+    
+    FirebaseApi.uploadFileData(files);
+  
+  
+  });
   
 };

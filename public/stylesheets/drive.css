@@ -15,4 +15,9 @@
     background: #55c3f5;
     transition: width 0.1s; }
 
+.drag-zone {
+  width: 600px;
+  height: 300px;
+  background: #f5923e; }
+
 /*# sourceMappingURL=drive.css.map */
