@@ -108,6 +108,29 @@ const FirebaseDB = {
       });
     
     return files;
+  },
+  
+  downloadFile: (uid) => {
+  
+    storageRef.child('files').getDownloadURL().then(function (url) {
+      // `url` is the download URL for 'images/stars.jpg'
+
+      // This can be downloaded directly:
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function (event) {
+        var blob = xhr.response;
+      };
+      xhr.open('GET', url);
+      xhr.send();
+
+      // Or inserted into an <img> element:
+      var img = document.getElementById('myimg');
+      img.src = url;
+    }).catch(function (error) {
+      // Handle any errors
+    });
+    
   }
   
 };
@@ -116,6 +139,11 @@ const FirebaseApi = new function () {
   
   let listener = null;
   let progressListener = null;
+  let readListener = null;
+  
+  function setOnReadListener(callback) {
+    readListener = callback;
+  }
   
   function setOnProgressListener(callback) {
     progressListener = callback;
@@ -181,24 +209,30 @@ const FirebaseApi = new function () {
     const user = auth.currentUser;
     
     for (let i = 0; i < files.length; i++) {
-      const ref = storageRef.child(files[i].name).put(files[i]);
+      const metadata = {
+        customMetadata: {
+          'uid': user.uid,
+        }
+      };
+      
+      
+      var userRef = storageRef.child(`files`);
+      const ref = userRef.child(files[i].name).put(files[i], metadata);
+  
+      // const ref = storageRef.child(files[i].name).put(files[i], metadata);
+      
+      
       await ref.on('state_changed', function (snapshot) {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
-        switch (snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log('Upload is paused');
-            break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log('Upload is running');
-            break;
-        }
       }, function (error) {
-      }, function () {
+        console.log(error);
+      }, await function () {
         ref.snapshot.ref.getDownloadURL().then(function (downloadURL) {
           console.log('File available at', downloadURL);
           progressListener(files.length - i);
         });
+        
       });
       
       await FirebaseDB.uploadFile(user.uid, files[i]);
@@ -208,8 +242,9 @@ const FirebaseApi = new function () {
   async function readFileData() {
     
     const user = auth.currentUser;
-    const a = await FirebaseDB.readFile(user.uid);
-    console.log(a);
+    const files = await FirebaseDB.readFile(user.uid);
+    console.log(files);
+    readListener(files);
   }
   
   return {
@@ -218,7 +253,8 @@ const FirebaseApi = new function () {
     setOnAuthStateChanged,
     setOnProgressListener,
     uploadFileData,
-    readFileData
+    readFileData,
+    setOnReadListener
   };
   
   

@@ -1,0 +1,188 @@
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/dropDrive.css')
+    link(link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous")
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons',
+    rel='stylesheet')
+    script(src="https://code.jquery.com/jquery-3.3.1.js",
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=",
+    crossorigin="anonymous")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js')
+    script(src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js")
+
+  body
+    input#fileUploader(type="file" multiple='multiple')
+    .side-bar-cover(type='false')
+      .full-screen-blocker
+      .left-side-bar
+        .profile-field.flex.align-center
+          .profile-photo.left-photo
+          .name-email-cover.flex-1
+            .nick-name.left-name nobody
+            .email.left-email nothing
+        .scroll-cover
+          .menu-theme.flex.flex-1 저장공간 관리
+          .storage-grid
+            .used-storage-part.flex-1 5.5GB / 10GB
+            .storage-part.flex
+              .cell.type-image#storage-image(style='width:0%')
+              .cell.type-code#storage-application(style='width:0%')
+              .cell.type-text#storage-text(style='width:0%')
+              .cell.type-sound#storage-audio(style='width:0%')
+              .cell.type-video#storage-video(style='width:0%')
+              .cell.type-etc#storage-etc(style='width:0%')
+
+            .storage-description-part
+              .category
+                .box.type-image
+                .text IMAGE
+                  i#category-image
+              .category
+                .box.type-text
+                .text TEXT
+                  i#category-text
+              .category
+                .box.type-code
+                .text CODE
+                  i#category-code
+              .category
+                .box.type-video
+                .text VIDEO
+                  i#category-video
+              .category
+                .box.type-sound
+                .text SOUND
+                  i#category-sound
+              .category
+                .box.type-etc
+                .text ETC
+                  i#category-etc
+          .line
+          .menu-theme.flex.flex-1 카테고리
+            .reset-button.flex.align-center
+              .i.fas.fa-undo
+          .category-card-grid
+            .category-card-outer(type='')
+              .category-card.type-image
+                .category-card-cover
+                .text-group(type='image')
+                  .name IMAGE
+                  .desc-group
+                    .count 0
+                    .capacity / 0GB
+                .icon-group
+                  .i.fas.fa-image.type-image-color
+            .category-card-outer(type='')
+              .category-card.type-code
+                .category-card-cover
+                .text-group(type='application')
+                  .name APPLICATION
+                  .desc-group
+                    .count 0
+                    .capacity / 0GB
+                .icon-group
+                  .i.fas.fa-code.type-code-color
+            .category-card-outer(type='')
+              .category-card.type-text
+                .category-card-cover
+                .text-group(type='text')
+                  .name TEXT
+                  .desc-group
+                    .count 0
+                    .capacity / 0GB
+                .icon-group
+                  .i.fas.fa-font.type-text-color
+            .category-card-outer(type='')
+              .category-card.type-sound
+                .category-card-cover
+                .text-group(type='audio')
+                  .name AUDIO
+                  .desc-group
+                    .count 0
+                    .capacity / 0GB
+                .icon-group
+                  .i.fas.fa-music.type-sound-color
+            .category-card-outer(type='')
+              .category-card.type-video
+                .category-card-cover
+                .text-group(type='video')
+                  .name VIDEO
+                  .desc-group
+                    .count 0
+                    .capacity / 0GB
+                .icon-group
+                  .i.fas.fa-video.type-video-color
+            .category-card-outer(type='')
+              .category-card.type-etc
+                .category-card-cover
+                .text-group(type='etc')
+                  .name ETC
+                  .desc-group
+                    .count 0
+                    .capacity / 0GB
+                .icon-group
+                  .i.fas.fa-file.type-etc-color
+
+
+    .nav-zone.flex.height-align-center
+      .nav-cover-zone(type='nav')
+      .logo-field(type='nav')
+        i.fab.fa-ember
+      .input-field.flex.align-center(type='nav')
+        .icon-grid.flex.align-center
+          i.fas.fa-search
+        input#search(placeholder='SEARCH')
+      .flex-1
+      .nav-profile-field.flex.align-center(type='logout')
+        .login-logout-cover.flex.align-center
+          i.fas.fa-power-off
+        .nick-mail-cover
+          .nick-name-grid.name-nick SuperTTL
+          .email-grid.e-mail empty
+        .login-button.flex.align-center
+          i.fas.fa-user-astronaut
+        .profile-photo-grid.align-center
+
+    .button-zone.flex.height-align-center
+      .button-cover.flex.flex-1.height-align-center
+        .icon-button-field.flex.align-center(command='cog')
+          i.fas.fa-user-cog
+        .icon-button-field.flex.align-center(type='down')
+          i.fas.fa-sort-alpha-down
+          i.fas.fa-sort-alpha-up
+        .flex-1
+        .icon-button-field.flex.align-center(type='card', command='grid')
+          i.fas.fa-th-list
+          i.fas.fa-th-large
+        .icon-button-field.flex.align-center(command='users')
+          i.fas.fa-users
+      .changing-field.flex.height-align-center(type='false')
+        .title-grid Friends
+
+    .browse-button.flex.align-center.upload-button
+      i.fas.fa-plus
+    .upload-condition-zone.flex
+      .upload-field.flex.flex-1.align-center
+        .description-button-grid.flex.align-center
+          svg
+            rect
+          i.material-icons devices_other
+          .description Drop Files Here
+          .button.flex.align-center.upload-button Browse
+
+      //square
+      .card-part.flex.display-none(type='square')
+
+
+      .condition-bar-field(type='false')
+        .travellers-part
+          //.travellers-cell.flex.align-center
+          //  .photo-div
+          //    .travellers-photo
+          //  .travellers-name-div.flex-1 Jeremy Shaw
+          //  .radio-box.flex.align-center
+          //    .circle
+  script(src='/javascripts/20180805/firebase.selector.js')
+  script(src="/javascripts/20180805/controller.example.js")
+  script(src='/javascripts/20180805/dragDrop.js')

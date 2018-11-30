@@ -5,6 +5,17 @@ const UIController = new function () {
   const $input = $('input');
   const $readFile = $('#read');
   const $progress = $('.progress');
+  const $drop = $('.drag-zone');
+  const $view = $('.view');
+  
+  const $inputZone = $('.input-zone');
+  
+  $inputZone.on('click', () => {
+    console.log('click');
+  });
+  $inputZone.trigger('click');
+  $inputZone.trigger('click');
+  
   
   $signIn.on('click', FirebaseApi.signIn);
   $signOut.on('click', FirebaseApi.signOut);
@@ -27,12 +38,35 @@ const UIController = new function () {
     $progress.css('width', length);
   });
   
+  FirebaseApi.setOnReadListener((files) => {
+    const filecontent = [];
+    for (let i = 0; i < files.length; i++) {
+      filecontent.push(new AppendFile(files[i]));
+      // const template = `<div class = "file">${files[i].name}</div>`;
+      // $view.append(template);
+    }
+  });
+  
+  
+  function AppendFile(file) {
+    const template = `<div class = "file"></div>`;
+    const $ele = $(template);
+    $ele.text(file.name);
+    $view.append($ele);
+    
+    $ele.on('click', () => {
+      console.log($ele.text());
+      FirebaseDB.downloadFile(auth.currentUser);
+    });
+    
+    return this;
+  }
   
   $input.on('change', function (e) {
     
     $progress.css('width', 0);
-    console.log('dd', e.target.files);
-    FirebaseApi.uploadFileData(e.target.files);
+    console.log('dd', e.target.files[0]);
+    // FirebaseApi.uploadFileData(e.target.files);
     
     // FirebaseApi.uploadFileData(e.target.files[0]);
   });
@@ -42,37 +76,36 @@ const UIController = new function () {
   });
   
   
-  const $drop = $('.drag-zone');
-  
-  $drop.on('dragenter', function(e){
+  $drop.on('dragenter', function (e) {
     e.stopPropagation();
     e.preventDefault();
     
     $drop.css('border', "2px solid red");
   });
   
-  $drop.on('dragleave', function(e){
+  $drop.on('dragleave', function (e) {
     e.stopPropagation();
     e.preventDefault();
     
     $drop.css('border', "2px solid blue");
   });
   
-  $drop.on('dragover', function(e){
+  $drop.on('dragover', function (e) {
     e.stopPropagation();
     e.preventDefault();
     
     $drop.css('border', "2px solid green");
   });
   
-  $drop.on('drop', function(e){
+  $drop.on('drop', function (e) {
     e.preventDefault();
     const files = e.originalEvent.dataTransfer.files;
-    console.log(files);
     
-    FirebaseApi.uploadFileData(files);
-  
-  
+    // FirebaseApi.uploadFileData(files);
+    console.log('dd', e.target.files[0]);
+    
+    
   });
+  
   
 };
